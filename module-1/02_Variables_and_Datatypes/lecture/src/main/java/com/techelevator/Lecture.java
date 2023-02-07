@@ -7,16 +7,16 @@ public class Lecture {
 		/*
 		1. Create a variable to hold an int and call it numberOfExercises.
 			Then set it to 26.
-		*/
+		*/ int numberOfExercises = 26;
 
-		//System.out.println(numberOfExercises);
+		System.out.println( "there are " + numberOfExercises + " exercises");
 
 		/*
 		2. Create a variable to hold a double and call it half.
 			Set it to 0.5.
-		*/
+		*/double half = 0.5;
 
-		//System.out.println(half);
+		System.out.println("variable " + half + " has the value of");
 
 		/*
 		3. Create a variable to hold a String and call it name.

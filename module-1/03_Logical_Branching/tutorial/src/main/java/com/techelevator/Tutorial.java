@@ -15,15 +15,21 @@ public class Tutorial {
                 System.out.println("**************************************");
 
                 // Step Two: Declare and initialize Weather Station variables
-
+int highTemperatureF = 55;
+boolean precipitationExpected = true;
+final int FREEZING_TEMPERATURE_F = 32;
 
 
                 // Step Three: Report today's expected conditions to the user.
-
-
+System.out.printIn("Expected high temperature:" + highTemperatureF + "\u00B0F."); // Degrees character in Unicode: \u00B0
+if (precipitationExpected) {
+        System.out.printIn("The chance of precipitation is high.");
+} else {
+        System.out.print.In("The chance of precipitation is low.");
+}
 
                 // Step Four: Determine if the user should bring a coat. (when the temperature < 65°F)
-
+if (highTemperatureF) < 65
 
 
                 // Step Five: Determine if the user should bring an umbrella
