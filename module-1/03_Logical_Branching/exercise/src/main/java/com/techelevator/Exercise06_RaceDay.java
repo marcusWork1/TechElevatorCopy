@@ -6,15 +6,15 @@ public class Exercise06_RaceDay {
      * Registration for your company's annual 10K is underway.
      * Participants are assigned to a block based on their age (int) and whether
      * they registered early (boolean).
-     * 
+     *
      * Return a participant's block according to the following criteria:
      * If they are >= 18 and registered early, they join the first block.
      * If they are >= 18 and did not register early, they join the second block.
      * If they are < 18, they join the third block.
-     * 
+     *
      * Given a runner's age (int) and early-registration status (boolean), return
      * their assigned race block:
-     * 
+     *
      * Examples:
      * determineRaceBlock(17, false) ➔ 3
      * determineRaceBlock(17, true) ➔ 3
@@ -24,6 +24,13 @@ public class Exercise06_RaceDay {
      * determineRaceBlock(30, true) ➔ 1
      */
     public int determineRaceBlock(int age, boolean isEarlyRegistration) {
+        if (age >= 18 && isEarlyRegistration) {
+            return 1;
+        } else if (age >= 18 && !isEarlyRegistration) {
+            return 2;
+        } else if (age < 18) {
+            return 3;
+        }
         return 0;
     }
 
@@ -31,15 +38,15 @@ public class Exercise06_RaceDay {
      * The race organizers need to assign each participant a bib number. The bib
      * number is either their registration number, or their registration number + 1000,
      * depending on the following conditions:
-     * 
+     *
      * If they are >= 18 and registered early their race bib number is their
      * registration number + 1000.
      * If they are < 18, or >= 18 and did not register early, their race bib
      * number is their registration number.
-     * 
+     *
      * Given a participant's age (int), their registration number (int), and whether
      * they registered early (boolean), return their race bib number (int).
-     * 
+     *
      * Examples:
      * getBibNumber(17, 500, false) ➔ 500
      * getBibNumber(17, 500, true) ➔ 500
@@ -49,6 +56,12 @@ public class Exercise06_RaceDay {
      * getBibNumber(30, 700, true) ➔ 1700
      */
     public int getBibNumber(int age, int registrationNumber, boolean isEarlyRegistration) {
+        if ((age < 18) || (age >= 18 && !isEarlyRegistration)) {
+            return registrationNumber;
+        }
+        if (age >= 18 && isEarlyRegistration) {
+            return registrationNumber + 1000;
+        }
         return 0;
     }
 
@@ -72,6 +85,16 @@ public class Exercise06_RaceDay {
      * getConfirmedBibNumber(30, 1001, true) ➔ 2001
      */
     public int getConfirmedBibNumber(int age, int registrationNumber, boolean isEarlyRegistration) {
-        return 0;
-    }
+        if (((age < 18) || (age >= 18 && !isEarlyRegistration)) && registrationNumber <= 1000) {
+            return registrationNumber;
+        }
+        if (age >= 18 && isEarlyRegistration) {
+            return registrationNumber + 1000;
+        }
+        if (!isEarlyRegistration && registrationNumber > 1000) {
+            return -1;
+        }
+        return 1;
+        }
 }
+

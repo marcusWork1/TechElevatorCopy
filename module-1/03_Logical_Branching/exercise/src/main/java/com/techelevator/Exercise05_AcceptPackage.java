@@ -24,8 +24,11 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50) ➔ false
      */
     public boolean acceptPackage(int weightPounds) {
-        return false;
+        if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return true;
+        } else return false;
     }
+
 
     /*
     Scamper Shipping delivers packages by hand, and some packages can be awkward to carry.
@@ -41,6 +44,9 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50, 4, 5, 10) ➔ false
      */
     public boolean acceptPackage(int weightPounds, int lengthInches, int widthInches, int heightInches) {
+        if (weightPounds <= MAX_WEIGHT_POUNDS && (lengthInches * widthInches * heightInches) < 6912) {
+            return true;
+        }
         return false;
     }
 
@@ -64,6 +70,12 @@ public class Exercise05_AcceptPackage {
     acceptPackage(50, 4, 5, 10, true) ➔ false
      */
     public boolean acceptPackage(int weightPounds, int lengthInches, int widthInches, int heightInches, boolean isSurchargePaid) {
+        if (weightPounds <= MAX_WEIGHT_POUNDS && (lengthInches * widthInches * heightInches) < 6912 && lengthInches <= 66 && widthInches <= 66 && heightInches <= 66) {
+            return true;}
+        else if (weightPounds <= MAX_WEIGHT_POUNDS && (lengthInches * widthInches * heightInches) < 6912 && (lengthInches <= 66 || widthInches <= 66 || heightInches <= 66) && isSurchargePaid) {
+            return true;
+        }
+
         return false;
     }
 }

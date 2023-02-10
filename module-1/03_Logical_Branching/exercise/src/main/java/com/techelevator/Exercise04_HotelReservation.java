@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.Dictionary;
+
 public class Exercise04_HotelReservation {
 
     /*
@@ -26,7 +28,11 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3) ➔ 269.97
      */
     public double calculateStayTotal(int numberOfNights) {
-        return 0.0;
+        if (numberOfNights < 3) {
+            return DAILY_RATE * numberOfNights;
+        } else {
+            return numberOfNights * DISCOUNT_RATE;
+        }
     }
 
     /*
@@ -41,6 +47,19 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, true) ➔ 344.97
      */
     public double calculateStayTotal(int numOfTotalNights, boolean includesParking) {
+        if (includesParking == true && numOfTotalNights < 3) {
+            return numOfTotalNights * (PARKING_RATE + DAILY_RATE);
+        }
+        if (includesParking && numOfTotalNights >= 3) {
+            return numOfTotalNights * (PARKING_RATE + DISCOUNT_RATE);
+        }
+        if (includesParking == false && numOfTotalNights < 3) {
+            return numOfTotalNights * DAILY_RATE;
+        }
+        if (includesParking == false && numOfTotalNights >= 3) {
+            return numOfTotalNights * DISCOUNT_RATE;
+        }
+
         return 0.0;
     }
 
@@ -61,6 +80,21 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, true, true) ➔ 364.97
      */
     public double calculateStayTotal(int numOfTotalNights, boolean includesParking, boolean includesLateCheckout) {
-        return 0.0;
+        double lateCheckout = 0;
+        if (includesLateCheckout) {
+            lateCheckout = 20;
+        }
+        double parkingCost = 0;
+        if (includesParking) {
+            parkingCost = (numOfTotalNights * PARKING_RATE);
+        }
+        double individualRate = 0;
+        if (numOfTotalNights >= MINIMUM_NIGHTS_FOR_DISCOUNT_RATE) {
+            individualRate = DISCOUNT_RATE * numOfTotalNights;
+        } else {
+            individualRate = DAILY_RATE * numOfTotalNights;
+        }
+        return individualRate + lateCheckout + parkingCost;
+        }
+
     }
-}

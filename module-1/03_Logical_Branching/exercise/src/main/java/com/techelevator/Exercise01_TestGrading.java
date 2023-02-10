@@ -18,6 +18,10 @@ public class Exercise01_TestGrading {
     gradeTestPassFail(45) ➔ false
      */
     public boolean gradeTestPassFail(int score) {
+        if (score >= 70) {
+            return true;
+        } else {
+        }
         return false;
     }
 
@@ -37,8 +41,16 @@ public class Exercise01_TestGrading {
     gradeTestNumeric(10) ➔ 0
      */
     public int gradeTestNumeric(int score) {
-        return 0;
-    }
+        if (score < 25) {
+            return 0;
+        } else if (score >= 25 && score <= 49) {
+            return 1;
+        } else if (score >= 50 && score < 90) {
+            return 2;
+        } else  {
+            return 3;
+        }
+        }
 
     /*
     Grade-o-matic has received even more requests to grade using the classic letter scale.
@@ -56,6 +68,20 @@ public class Exercise01_TestGrading {
     gradeTestLetter(45) ➔ 'F'
      */
     public char gradeTestLetter(int score) {
-        return ' ';
+        if (score >= 90) {
+            return 'A';
+        } else if (score > 79 && score < 90) {
+            return 'B';
+        } else if (score < 80 && score > 69) {
+            return 'C';
+        } else if (score > 59 && score < 70) {
+            return 'D';
+        } else if (score < 60) {
+            return 'F';
+        } else return 'G';
     }
 }
+
+
+
+
