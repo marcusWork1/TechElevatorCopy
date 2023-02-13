@@ -9,7 +9,13 @@ public class Exercises {
 	 helloName("X") → "Hello X!"
 	 */
 	public String helloName(String name) {
-		return null;
+		// define a variable to returned
+		String greeting;
+
+		// create the value to be returned and store it in the return variable
+ 		greeting = "Hello " + name + "!";
+		//return the variable
+		return greeting;
 	}
 
 	/*
@@ -20,7 +26,13 @@ public class Exercises {
 	 makeAbba("What", "Up") → "WhatUpUpWhat"
 	 */
 	public String makeAbba(String a, String b) {
-		return null;
+		String variable;
+
+
+		variable = (a + b + b + a);
+
+		return variable;
+
 	}
 
 	/*
@@ -32,7 +44,10 @@ public class Exercises {
 	 makeTags("cite", "Yay") → "<cite>Yay</cite>"
 	 */
 	public String makeTags(String tag, String word) {
-		return null;
+		String html;
+
+		html = ("<" + tag + ">" + word + "</" + tag + ">");
+		return html;
 	}
 
 	/*
@@ -44,7 +59,13 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
-		return null;
+		String rightSide;
+		String leftSide;
+
+rightSide = out.substring(2, 4);
+leftSide = out.substring(0,2 );
+
+		return leftSide + word + rightSide;
 	}
 
 	/*
@@ -55,7 +76,12 @@ public class Exercises {
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
-		return null;
+		// new string
+		String copies;
+
+		copies = str.substring(str.length()-2);
+
+		return copies + copies + copies;
 	}
 
 	/*
@@ -67,8 +93,17 @@ public class Exercises {
 	 firstTwo("ab") → "ab"
 	 */
 	public String firstTwo(String str) {
-		return null;
-	}
+		String twoFirst;
+		int length = str.length();
+
+		if (length < 2) {
+			return str;
+		} else if (length <= 2);
+
+		twoFirst = str.substring(0, 2);
+
+		return twoFirst;
+		}
 
 	/*
 	 Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".
@@ -122,7 +157,10 @@ public class Exercises {
 	 left2("Hi") → "Hi"
 	 */
 	public String left2(String str) {
-		return null;
+		String throwTwoBack;
+		String beerB = str.substring(2);
+		throwTwoBack = beerB + str.charAt(0) + str.charAt(1);
+		return throwTwoBack;
 	}
 
 	/*
@@ -133,7 +171,15 @@ public class Exercises {
 	 right2("Hi") → "Hi"
 	 */
 	public String right2(String str) {
-		return null;
+
+		// index what you want to start with is length of string - 2.
+
+		String lastTwo;
+		lastTwo = str.substring(str.length()-2);
+
+		String startPart = str.substring(0, str.length()-2);
+
+		return lastTwo + startPart;
 	}
 
 	/*

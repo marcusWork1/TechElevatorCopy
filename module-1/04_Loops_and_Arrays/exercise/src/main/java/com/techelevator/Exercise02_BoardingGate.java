@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import javax.swing.plaf.metal.OceanTheme;
+
 public class Exercise02_BoardingGate {
 
     /*
@@ -26,16 +28,19 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(5) → [AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE, AVAILABLE]
     generateSeatingChart(2) → [AVAILABLE, AVAILABLE]
      */
+    // generate seating chart  using required number of seats
+    // figure out number of seats available
+    // indicate that each seat is available to start
+    //
     public boolean[] generateSeatingChart(int numberOfSeats) {
-        boolean seatsAvailable = true;
-    for ( int i = 0; i == numberOfSeats.length; i++) {
-        if (numberOfSeats == 0)
 
-        }
-    }
+        boolean[] seats = new boolean[numberOfSeats];
+        for (int i = 0; i < seats.length; i++) {
+            seats[i] = AVAILABLE;
 
-    }
+    } return seats;
 
+}
     /*
     Once passengers begin boarding the plane, gate attendants need a way to determine how many available
     seats there are on the plane.
@@ -51,12 +56,23 @@ public class Exercise02_BoardingGate {
     getAvailableSeatCount([AVAILABLE, AVAILABLE, AVAILABLE, OCCUPIED]) → 3
     getAvailableSeatCount([]) → 0
      */
+    // # of available seats in the seating chart
+    // use the array provided
+    // how many Available vs occupied or true vs false
     public int getAvailableSeatCount(boolean[] seatingChart) {
-        return 0;
+        int availableSeats = 0;
+        for (int i = 0; i < seatingChart.length; i++)
+        {
+            if (seatingChart[i] == AVAILABLE)
+            {
+                availableSeats = availableSeats + 1;
+            }
+
+        } return availableSeats;
     }
 
     /*
-    The crew determined that it would be nice to know how many rows on the plane are at full occupancy.
+    The crew determined that it would be nice to know how many rows on the plane are at full5 occupancy.
     Each row has three seats and a row is at full occupancy if all three seats have someone sitting in them.
 
     Using the boolean array, implement the logic to count the number of full rows on the plane.
@@ -68,7 +84,17 @@ public class Exercise02_BoardingGate {
     getNumberOfFullRows([OCCUPIED, AVAILABLE, AVAILABLE, OCCUPIED, AVAILABLE, AVAILABLE]) → 0
      */
     public int getNumberOfFullRows(boolean[] seatingChart) {
-        return 0;
+        // name an int for number of rows
+        int rows = 0;
+
+        // for loop to run through the seats/rows
+        for (int i = 0; i < seatingChart.length; i+=3 ) {
+            if (seatingChart[i] == OCCUPIED && seatingChart[i + 1] == OCCUPIED && seatingChart[i + 2] == OCCUPIED) {
+                rows = rows + 1;
+              }
+        }
+        return rows;
+            // return the number of rows
     }
 
 }
