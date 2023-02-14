@@ -17,7 +17,7 @@ public class Exercise04_Cards {
      */
 
     /*
-    Given a 5 card array, return the value of the first card.
+    Given a 5 card array, return the value of the first card.itt
 
     Examples:
     getFirstCard(["3-H", "7-H", "5-H", "8-H", "6-H"]) → "3-H"
