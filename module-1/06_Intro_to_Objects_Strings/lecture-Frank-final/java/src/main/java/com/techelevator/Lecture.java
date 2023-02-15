@@ -169,12 +169,13 @@ public class Lecture {
 		/* Double equals will compare to see if the two variables, hello1 and
 		 * hello2 point to the same object in memory. Are they the same object? */
 
+		// using == mwith reference types, like strings, compares the location of the data not the contents
 		if (hello1 == hello2) {
 			System.out.println("They are equal!");
 		} else {
 			System.out.println(hello1 + " is not equal to " + hello2);
 		}
-
+		// using the = assigns hello3 to hello1 location. so they are equal. = assigns and compares locations == compares content
 		String hello3 = hello1;
 		if (hello1 == hello3) {
 			System.out.println("hello1 is the same reference as hello3");

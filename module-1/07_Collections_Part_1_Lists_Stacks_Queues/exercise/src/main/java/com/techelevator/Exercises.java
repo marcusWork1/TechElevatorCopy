@@ -16,7 +16,24 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+		// Define the data to be returned
+
+		List<String> returnValue = new ArrayList<>();
+
+		// go through the array given and add element to the arraylist we are return
+		for(int i = 0; i < stringArray.length; i++) {
+			// using for loop to assign value to arrayList
+			returnValue.add(stringArray[i]);
+
+
+			// for each is also possible
+			// here is the for each                    for(String anElement : stringArray) {
+				// here is the for each                      returnValue.add(anElement);
+														// {
+		}
+
+		// return the return value
+		return returnValue;
 	}
 
 	/*
@@ -26,7 +43,13 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+
+	// declare new String Array called "arrayNew" and "multiply" the datatype "string array" (String[]) by the previous list named ("stringList".toArray)
+		// this makes the new array have the same content as the old one.
+		//												make sure you cast to string by declaring "new String[data]"
+		String[] arrayNew = (String[])stringList.toArray(new String[0]);
+
+		return arrayNew;
 	}
 
 	/*
@@ -37,9 +60,26 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
-	}
 
+		// convert array into array list
+		List<String> arrayListNew = new ArrayList<>();
+
+		// loop to pull up each index of the original array
+		for (int i = 0; i < stringArray.length; i++) {
+
+			// new string to hold contents of loop for original array
+			String newString = stringArray[i];
+
+			// if the lengtgh of it is 4, do not put into the arrayList
+			if (newString.length() < 4 || newString.length() > 4) {
+
+				// since index does not = 4, add contents of array to arrayList
+				arrayListNew.add(newString);
+			}
+
+		} return arrayListNew;
+
+		}
 	/*
 	 Given an array of ints, divide each int by 2, and return an ArrayList of Doubles.
 	 arrayInt2ListDouble( {5, 8, 11, 200, 97} ) -> [2.5, 4.0, 5.5, 100, 48.5]
@@ -47,7 +87,26 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		// we get an array
+		// divide each index/element/number by 2
+		// put these numbers into an array list of doubles
+
+		// our arrayList holder
+		List<Double> doubleTrouble = new ArrayList<Double>();
+
+		// loop through the array and get indexes
+		for (int i = 0; i < intArray.length; i++) {
+
+			// divide the number at index[i] by 2 // define this number as add to array list.
+			double addedToArrayList = (double)intArray[i] /2;
+
+
+			// add the divided index [i]
+			doubleTrouble.add(addedToArrayList);
+
+		}
+		// return arrayLIst
+		return doubleTrouble;
 	}
 
 	/*
@@ -57,7 +116,27 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+
+		// given a List of Integers
+		// search through list and find largest value
+
+		// describe variable to to hold largest value
+		int largestValue = 0;
+
+		// create forloop to run through list
+		for (int i = 0; i < integerList.size(); i++) {
+
+			// get "i" from integerList if it is greater than largest value, so loop runs until "i" is the largest value. each i value is larger than the previous value. if one i value is not bigger than another, it will give you the biggest one that has gone through the loop so far.
+			if(integerList.get(i) >= largestValue) {
+				// "i" is the largest value, and we got "i" from the integerList. Now assign value of i to largestValue
+				largestValue = integerList.get(i);
+
+			}
+
+		}
+
+
+		return largestValue;
 	}
 
 	/*

@@ -112,7 +112,11 @@ leftSide = out.substring(0,2 );
 	 firstHalf("abcdef") → "abc"
 	 */
 	public String firstHalf(String str) {
-		return null;
+
+		int halfLength = str.length() / 2;
+		String halfFirst = str.substring(0, halfLength);
+
+		return halfFirst;
 	}
 
 	/*
@@ -123,7 +127,10 @@ leftSide = out.substring(0,2 );
 	 withoutEnd("coding") → "odin"
 	 */
 	public String withoutEnd(String str) {
-		return null;
+
+		String newStr = str.substring(1, str.length()-1);
+
+		return newStr;
 	}
 
 	/*
@@ -135,7 +142,11 @@ leftSide = out.substring(0,2 );
 	 comboString("aaa", "b") → "baaab"
 	 */
 	public String comboString(String a, String b) {
-		return null;
+
+		if (a.length() > b.length()) {
+			return b + a + b;
+		} else if (b.length() > a.length()) {
+		} return a + b + a;
 	}
 
 	/*
@@ -146,7 +157,11 @@ leftSide = out.substring(0,2 );
 	 nonStart("shotl", "java") → "hotlava"
 	 */
 	public String nonStart(String a, String b) {
-		return null;
+
+		String newString= a.substring(1);
+		String stringNew= b.substring(1);
+
+		return newString + stringNew;
 	}
 
 	/*
@@ -190,7 +205,15 @@ leftSide = out.substring(0,2 );
 	 theEnd("oh", true) → "o"
 	 */
 	public String theEnd(String str, boolean front) {
-		return null;
+
+		String newString = str.substring(0, 1);
+
+		if (front) {
+			return newString; }
+		else {
+			String newStringTwo = str.substring(str.length()-1);
+			return newStringTwo;
+		}
 	}
 
 	/*
@@ -201,7 +224,13 @@ leftSide = out.substring(0,2 );
 	 withoutEnd2("ab") → ""
 	 */
 	public String withoutEnd2(String str) {
-		return null;
+
+		if (str.length() == 1) {
+			return str = "";
+		}
+		if (str.length() > 1) {
+			str = str.substring(1, str.length() - 1);
+		}  return str;
 	}
 
 	/*
@@ -212,7 +241,10 @@ leftSide = out.substring(0,2 );
 	 middleTwo("Practice") → "ct"
 	 */
 	public String middleTwo(String str) {
-		return null;
+
+		int half = str.length() / 2;
+
+		return str.substring(half-1, half+1);
 	}
 
 	/*

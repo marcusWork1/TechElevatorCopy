@@ -45,10 +45,10 @@ public class RoundingExample
          *        https://www.cs.colostate.edu/~cs160/.Summer16/resources/Java_printf_method_quick_reference.pdf
          *
          */
-
+        // \n excape character that represents a new line 
         // Use printf() to display moneyFound with 2 rounded decimal places
         //                         %.2f - placeholder for a value          value-for-the-placeholder
-        System.out.printf("\nHi Anthony!\nmoneyFound with formatting via printf:%.2f\n", moneyFound);
+        System.out.printf(" moneyFound with formatting via printf:%.2f\n", moneyFound);
 
         System.out.println("-------------------------------------------------------");
         /*
