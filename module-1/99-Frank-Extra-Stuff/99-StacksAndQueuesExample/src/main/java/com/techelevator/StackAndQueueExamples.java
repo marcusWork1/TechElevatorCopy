@@ -1,6 +1,8 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class StackAndQueueExamples {
@@ -34,10 +36,14 @@ public class StackAndQueueExamples {
  *  .clear()          - remove all elements in the Stack
  *  .clone()          - return a reference to a Object class clone of the stack
  *                      you must cast reference to type necessary
+ *
+ *                      STACK = LAST COME FIRST SERVE. WHATEVER DATA TYPE IS ENTERED FIRST, IS POPPED LAST. DATA ENTERED LAST IS POPPED FIRST
+ *                      QUEUE = FIRST COME FIRST SERVE. WHATEVER DATA TYPE WAS ENTERED FIRST IS POPPED/POLLED/REMOVED FIRST
  * 
  **********************************************************************************/
 
-		Stack <String> myStack = new Stack<String>();
+		List<String> arrayList = new ArrayList<>();
+		Stack <String> myStack = new Stack();
 		
 		myStack.push("Kirk");
 		myStack.push("Spock");
@@ -86,9 +92,9 @@ public class StackAndQueueExamples {
  *  .add(object)      - add element to end of Queue
  *  .offer(object)    - same as add()
  *  .push(object)     - add element to start of Queue
- *  .pop()            - return and remove top element on the Queue
- *  .poll()           - same as pop()
- *  .remove()         - same as pop()
+ *  .pop()            - return and remove top element on the Queue - ONLY WORKS FOR LINKEDLIST
+ *  .poll()           - same as pop() - RETURNS NULL IF QUEUE IS EMPTY
+ *  .remove()         - same as pop() - THROW AN EXCEPTION (ERROR) IF QUEUE IS EMPTY
  *  .pollLast()       - return and remove last element in the Queue
  *  .remove(index)    - remove element at index given
  *  .peek()           - return top element without removing it

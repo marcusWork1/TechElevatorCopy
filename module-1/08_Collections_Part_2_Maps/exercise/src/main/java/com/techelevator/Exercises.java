@@ -1,7 +1,11 @@
 package com.techelevator;
 
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicScrollPaneUI;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 public class Exercises {
 
@@ -34,7 +38,31 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
-		return null;
+
+		// create map
+		Map<String, String> animalGroup = new HashMap<>();
+
+		// populate map in all lower or uppercase
+		animalGroup.put("rhino", "Crash");
+		animalGroup.put("giraffe", "Tower");
+		animalGroup.put("elephant", "Herd");
+		animalGroup.put("lion", "Pride");
+		animalGroup.put("crow", "Murder");
+		animalGroup.put("pigeon", "Kit");
+		animalGroup.put("flamingo", "Pat");
+		animalGroup.put("deer", "Herd");
+		animalGroup.put("dog", "Pack");
+		animalGroup.put("crocodile", "Float");
+
+
+		// if animal name equal to null, nothing happens:::::: if the map contains the key, the key/animal name becomes all lowercase
+		if (animalName != null && animalGroup.containsKey(animalName.toLowerCase())) {
+
+			// return the value from the animal name(name is made all lower case so it is "case insensitive")
+			return animalGroup.get(animalName.toLowerCase());
+		} else {
+			return "unknown";
+		}
 	}
 
 	/*
@@ -42,7 +70,7 @@ public class Exercises {
 	 * If the item is not on sale, return 0.00.
 	 *
 	 * If the item number is empty or null, return 0.00.
-	 *
+	 *N40
 	 * "KITCHEN4001" -> 0.20
 	 * "GARAGE1070" -> 0.15
 	 * "LIVINGROOM"	-> 0.10
@@ -60,7 +88,19 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(String itemNumber) {
-		return -1.0;
+
+		Map<String, Double> discountCode = new HashMap<>();
+
+		discountCode.put("kitchen4001", .20);
+		discountCode.put("garage1070", .15);
+		discountCode.put("livingroom", .10);
+		discountCode.put("kitchen6073", .40);
+		discountCode.put("bedroom3434", .60);
+		discountCode.put("bath0073", .15);
+
+		if ( itemNumber != null && discountCode.containsKey(itemNumber.toLowerCase())) {
+			return discountCode.get(itemNumber.toLowerCase());
+		} else return 0.0;
 	}
 
 	/*
@@ -76,7 +116,22 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		// how much money does each person have
+		int moneyPeterHas = peterPaul.get("Peter");
+		int moneyPaulHas = peterPaul.get("Paul");
+		int halfOfPeter = moneyPeterHas/2;
+		int paulRobbedPeter = moneyPaulHas + halfOfPeter;
+
+		// see who has more guap
+		if(moneyPeterHas > 0 && moneyPaulHas < 1000) {
+
+			// update peters $$ to half of what he had... subtract half of his instead of division.
+			peterPaul.put("Peter", moneyPeterHas - halfOfPeter);
+			peterPaul.put("Paul", (int)paulRobbedPeter);
+
+		}
+
+		return peterPaul;
 	}
 
 	/*
@@ -89,7 +144,20 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+
+		int moneyPeterHas = peterPaul.get("Peter");
+		int moneyPaulHas = peterPaul.get("Paul");
+		int quarterOfPeter = moneyPeterHas/4;
+		int quarterOfPaul = moneyPaulHas/4;
+
+		if(moneyPaulHas >= 10000 && moneyPeterHas >= 5000) {
+			peterPaul.put("PeterPaulPartnership", quarterOfPaul + quarterOfPeter);
+			peterPaul.put("Peter", moneyPeterHas - quarterOfPeter);
+			peterPaul.put("Paul", moneyPaulHas - quarterOfPaul);
+		}
+
+
+		return peterPaul;
 	}
 
 	/*
