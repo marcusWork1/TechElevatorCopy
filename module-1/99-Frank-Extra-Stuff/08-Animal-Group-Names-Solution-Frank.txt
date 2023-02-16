@@ -1,0 +1,79 @@
+/*
+	 * Given the name of an animal, return the name of a group of that animal
+	 * (e.g. "Elephant" -> "Herd", "Rhino" - "Crash").
+	 *
+	 * The animal name should be case insensitive so "elephant", "Elephant", and
+	 * "ELEPHANT" should all return "Herd".
+	 *
+	 * If the name of the animal is not found, null, or empty, return "unknown".
+	 *
+	 * Rhino -> Crash
+	 * Giraffe -> Tower
+	 * Elephant -> Herd
+	 * Lion -> Pride
+	 * Crow -> Murder
+	 * Pigeon -> Kit
+	 * Flamingo -> Pat
+	 * Deer -> Herd
+	 * Dog -> Pack
+	 * Crocodile -> Float
+	 *
+	 * animalGroupName("giraffe") → "Tower"
+	 * animalGroupName("") -> "unknown"
+	 * animalGroupName("walrus") -> "unknown"
+	 * animalGroupName("Rhino") -> "Crash"
+	 * animalGroupName("rhino") -> "Crash"
+	 * animalGroupName("elephants") -> "unknown"
+	 *
+	 */
+	//     return                   receive
+	public String animalGroupName(String animalName) {
+
+		// Since we don't know what data the user of this method is sending us
+		//       and they could be sending us nothing (null)
+		//       it's always a good practice to check to be sure any object sent
+		//       to the method is not null.
+		// If you try process a null object you will get a NullPointerException (error)
+
+		if(animalName == null) {  // if no animalName was received
+			return "unknown";     // return "unknown" instead of suffering a NullPointerException
+		}
+
+		String groupName = "unknown";  // value to be returned
+
+		// Set up a Map to associate an animal with it's group name
+		// To make a String case insensitive, use toUpperCase or toLowerCase
+		//           each time you look at it
+		//           and pick a case you will use in processing
+
+		// Specify the animal name in either all uppercase of all lowercase
+		// So you can search without regard to case of animal name you are given
+
+		Map<String, String> animalGroups = new HashMap();
+
+		animalGroups.put("GIRAFFE", "Tower");
+		animalGroups.put("RHINO", "Crash");
+		animalGroups.put("ELEPHANTS", "Tower");
+		animalGroups.put("CROW", "Murder");
+		animalGroups.put("LION", "Pride");
+		animalGroups.put("FLAMINGO", "Pat");
+		animalGroups.put("PIGEON", "Kit");
+		animalGroups.put("DEER", "Herd");
+		animalGroups.put("DOG", "Pack");
+		animalGroups.put("CROCODILE", "Float");
+
+		// Use toUppercase() to search for animalName so you don't the case of the name
+		// animalName = "giraffe" or "GIRAFFE" or "Giraffe" or "giRaFfE" all work
+
+		// Set the group name based on the animalName we are given
+		//     converted to uppercase
+		groupName = animalGroups.get(animalName.toUpperCase());
+
+		// If the animal given was not in our Map - return unknown
+		if(groupName == null){
+			groupName = "unknown";
+		}
+		// return the groupName from the Map for the animalName given
+		//        or null is the animalGiven is not  in the Map
+		return groupName;
+	}
