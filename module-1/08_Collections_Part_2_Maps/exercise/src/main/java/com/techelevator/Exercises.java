@@ -169,7 +169,13 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		return null;
+
+			Map<String, String> mapOfNonEmptyStrings = new HashMap();
+			for (String newString : words) {
+				mapOfNonEmptyStrings.put(newString.charAt(0) + "", newString.charAt(newString.length() - 1) + "");
+			}
+			return mapOfNonEmptyStrings;
+
 	}
 
 	/*
