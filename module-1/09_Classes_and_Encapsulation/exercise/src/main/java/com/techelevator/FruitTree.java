@@ -1,5 +1,6 @@
 package com.techelevator;
 
+
 public class FruitTree {
 
     private String typeOfFruit;
@@ -7,10 +8,10 @@ public class FruitTree {
 
 
 
-    public FruitTree(String typeOfFruit, int startingPiecesOfFruit) {
+    public FruitTree(String typeOfFruit, int piecesOfFruitLeft) {
 
         this.typeOfFruit = typeOfFruit;
-        this.piecesOfFruitLeft = startingPiecesOfFruit - piecesOfFruitLeft;
+        this.piecesOfFruitLeft = piecesOfFruitLeft;
     }
 
     public String getTypeOfFruit() {
@@ -21,20 +22,22 @@ public class FruitTree {
         return piecesOfFruitLeft;
     }
 
+
+    public boolean pickFruit(int numberOfPiecesToRemove) {
+
+        if(this.piecesOfFruitLeft>=numberOfPiecesToRemove)
+        {this.piecesOfFruitLeft-=numberOfPiecesToRemove;
+            return true;
+        }
+        return false;
+
+    }
+
     @Override
     public String toString() {
         return "FruitTree{" +
                 "typeOfFruit='" + typeOfFruit + '\'' +
                 ", piecesOfFruitLeft=" + piecesOfFruitLeft +
                 '}';
-    }
-
-    boolean pickFruit(int numberOfPiecesToRemove, String typeOfFruit) {
-
-        if(piecesOfFruitLeft>=numberOfPiecesToRemove)
-        {
-            return true;
-        }
-        return false;
     }
 }

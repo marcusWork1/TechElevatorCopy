@@ -62,7 +62,7 @@ public class PlayingCard {
 	//********************************************************************************************
 	private String  suit;
 	private int     value;   // 0=Joker, 11=Jack, 12=Queen, 13=King
-	private String  color;
+	private String  color; // is derived from the suit
 	private boolean showing; // true-face-up     false-face-down
 	private String  shape;   // read-only - no Setter or argument to a constructor
 	

@@ -1,20 +1,18 @@
 package com.techelevator;
 
-import java.time.Year;
 
 public class HomeworkAssignment {
 
     // create instance variables... don't forget to add getters and setters later
     private int earnedMarks;
-    private int possibleMarks;
+    private int possibleMarks; //
     private String submitterName;
-    private String letterGrade; // this string is derived from earnedMarks result
+    private String letterGrade; // this string is derived from earnedMarks result. earned/possible
 
     // create constructor
     public HomeworkAssignment(int possibleMarks, String submitterName) {
         this.possibleMarks = possibleMarks;
         this.submitterName = submitterName;
-
     }
 
     public int getEarnedMarks() {
@@ -30,27 +28,28 @@ public class HomeworkAssignment {
     }
 
     public String getLetterGrade() {
-        if (earnedMarks / possibleMarks >= (int) 90) {
-            letterGrade = "A";
+        if ((this.earnedMarks * 100) / this.possibleMarks >= 90) {
+            return "A";
         }
-        if (earnedMarks / possibleMarks < (int) 90 && earnedMarks >= (int) 80) {
-            letterGrade = "B";
+        if ((this.earnedMarks * 100) / this.possibleMarks >= 80) {
+            return "B";
         }
-        if (earnedMarks / possibleMarks < (int) 80 && earnedMarks >= (int) 70) {
-            letterGrade = "C";
+        if ((this.earnedMarks * 100) / this.possibleMarks >= 70) {
+            return "C";
         }
-        if (earnedMarks / possibleMarks < (int) 70 && earnedMarks >= (int) 60) {
-            letterGrade = "D";
+        if ((this.earnedMarks * 100) / this.possibleMarks >= 60) {
+            return "D";
+        } else if ((this.earnedMarks * 100) / this.possibleMarks < 60) {
+
         }
-        if (earnedMarks / possibleMarks < (int) 60) {
-            letterGrade = "F";
-        }
-        return letterGrade;
+        return "F";
     }
+
 
     public void setEarnedMarks(int earnedMarks) {
         this.earnedMarks = earnedMarks;
     }
+
 
     @Override
     public String toString() {
