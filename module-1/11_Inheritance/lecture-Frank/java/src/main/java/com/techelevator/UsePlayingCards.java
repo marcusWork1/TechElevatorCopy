@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import Cards.ItalianPlayingCard;
+
 public class UsePlayingCards {
 
 	public static void main(String[] args) {
@@ -24,6 +26,13 @@ public class UsePlayingCards {
 		else {
 			System.out.println("They are NOT equal");
 		}
-	}
 
-}
+		ItalianPlayingCard donCorleone = new ItalianPlayingCard(1, "Coins", "Yellow");
+		System.out.println("donCorleone is : \n" + donCorleone);
+
+		ItalianPlayingCard DiNiro = new ItalianPlayingCard(10, "Swords", "Blue");
+		System.out.println("DiNiro is : \n " + DiNiro);
+
+	} // end of main
+
+}// end of class holding main

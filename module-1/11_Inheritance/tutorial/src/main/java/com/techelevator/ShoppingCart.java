@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class ShoppingCart {
 
-	private List<Book> booksToBuy = new ArrayList<>();
+	private List<MediaItem> itemsToBuy = new ArrayList<>();
 
 	public void add(Book bookToAdd) {
 	    booksToBuy.add(bookToAdd);

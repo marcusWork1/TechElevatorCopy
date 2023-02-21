@@ -5,11 +5,17 @@ import java.util.Map;
 import java.util.TreeMap;
 /****************************************************************************************************
  * American Playing Card Class - subclass of generic PlayingCard
+ * this class has the methods and data of the super class PLayingCard
  ***************************************************************************************************/
 
+
+// this is a subclaass of playinCard (extends indicates a subclass)
+	// we define what we want to add or change to the data methods of superclass
 public class AmericanPlayingCard extends PlayingCard{
 	/************************************************************************************************
-	 * Constants for values related to American Playing Cards
+	 * Constants for values related to American Playing Cards. These constants are not described in superclass
+	 *
+	 * static indicates there is only one occurrence of the variable regardless of the number of objects defined
 	 ***********************************************************************************************/	
 	private static final int    DEFAULTCARDVALUE = 0;
 	private static final String DEFAULTCOLOR     = "BLACK";
@@ -21,7 +27,7 @@ public class AmericanPlayingCard extends PlayingCard{
 	 * Maps used to validate/limit suits, colors and value names for American Playing Cards
 	 *************************************************************************************************/	
 	
-	private static Map<String,  String> suitMap  = new HashMap<String , String>();  
+	private static Map<String,  String> suitMap  = new HashMap<String , String>();
 	private static Map<Integer, String> valueMap = new TreeMap<Integer, String>(); 
 	
 	/***************************************************************************************************
