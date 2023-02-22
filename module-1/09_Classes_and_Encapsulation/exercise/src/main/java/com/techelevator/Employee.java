@@ -5,7 +5,7 @@ public class Employee {
     private int employeeId;
     private String firstName;
     private String lastName;
-    private String fullName=firstName+" "+lastName ;
+    private String fullName= (this.lastName +", " + this.firstName);
     private String	department;
     private double annualSalary;
 
@@ -56,16 +56,16 @@ public class Employee {
 
   public void raiseSalary(double percent) {
       annualSalary += annualSalary * percent / 100;
-
   }
+
 
     @Override
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", fullName='" + fullName + '\'' +
+                ", FirstName='" + firstName + '\'' +
+                ", LastName='" + lastName + '\'' +
+                ", FullName='" + fullName + '\'' +
                 ", department='" + department + '\'' +
                 ", annualSalary=" + annualSalary +
                 '}';
