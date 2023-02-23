@@ -29,6 +29,7 @@ public class CreditCardAccount implements Accountable {
         return this.debt;
     }
 
+
     // make methods to get credit card account up and going
     // pay method returns debt after amount has been paid
     public int pay(int amountToPay) {

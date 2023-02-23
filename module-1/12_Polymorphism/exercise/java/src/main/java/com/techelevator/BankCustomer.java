@@ -27,6 +27,7 @@ public class BankCustomer {
 
     public String getPhoneNumber() {
         return this.phoneNumber;
+
     }
 
     public Accountable[] getAccounts() {
@@ -36,6 +37,7 @@ public class BankCustomer {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public void setAddress(String address) {
         this.address = address;
@@ -64,5 +66,3 @@ public class BankCustomer {
 
     }
 }
-
-    // add method
