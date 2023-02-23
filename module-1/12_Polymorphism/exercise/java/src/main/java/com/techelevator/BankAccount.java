@@ -41,5 +41,12 @@ public class BankAccount implements Accountable{
         balance = balance - amountToWithdraw;
         return balance;
     }
+    // add transferTo method
+   public int transferTo (BankAccount destinationAccount, int transferAmount) {
+        this.balance = this.balance - transferAmount;
+        destinationAccount.deposit(transferAmount);
+        return this.balance;
+   }
+
 
 }
