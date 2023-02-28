@@ -6,7 +6,6 @@ import java.util.Map;
 public class AnimalGroupName {
 
     private final Map<String, String> animals = new HashMap<>();
-
     public AnimalGroupName() {
         animals.put("rhino", "Crash");
         animals.put("giraffe", "Tower");
@@ -19,6 +18,7 @@ public class AnimalGroupName {
         animals.put("dog", "Pack");
         animals.put("crocodile", "Float");
     }
+
 
     /*
      * Given the name of an animal, return the name of a group of that animal
