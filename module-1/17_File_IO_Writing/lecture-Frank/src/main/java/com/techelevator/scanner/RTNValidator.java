@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 public class RTNValidator {
 
+	// given a file with bank routing numbers, verify the routing numbers are valid
+	// we are using a method given to us that determines ifa  routing numbers is valid
+	// we
+
 	private static final int[] CHECKSUM_WEIGHTS = new int[] { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
 
 	public static void main(String[] args)  throws FileNotFoundException {
@@ -57,6 +61,8 @@ public class RTNValidator {
 		}
 		return inputFile;      // we have a File object that exists and IS a file - so return it
 	}
+
+	// method for validating routing numbers
 
 	private static boolean checksumIsValid(String routingNumber) {
 		int checksum = 0;
