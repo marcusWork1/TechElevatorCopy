@@ -55,7 +55,7 @@ public class FindAndReplace {
             BufferedWriter fileNew = new BufferedWriter(newFile);
 
             // Create Scanner object
-            Scanner readFile = new Scanner(new File(String.valueOf(path)));
+            Scanner readFile = new Scanner(new File(path));
 
             // check next line present or not
             while (readFile.hasNextLine()) {

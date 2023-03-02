@@ -28,13 +28,12 @@ public class FizzWriter {
 			PrintWriter writer = new PrintWriter(destinationFile);
 
 // loop from 1 to 300(inclusive)
-			for(int n=1;n<=300;n++)
-			{
-				if(n%3 == 0 && n%5 == 0) // n is divisible by 3 and 5, output "FizzBuzz" to file
+			for (int n = 1; n <= 300; n++) {
+				if (n % 3 == 0 && n % 5 == 0) // n is divisible by 3 and 5, output "FizzBuzz" to file
 					writer.println("FizzBuzz");
-				else if(n%3 == 0 || (n+"").contains("3")) // n is divisible by 3 or n contains 3, output "Fizz"
+				else if (n % 3 == 0 || (n + "").contains("3")) // n is divisible by 3 or n contains 3, output "Fizz"
 					writer.println("Fizz");
-				else if(n%5 == 0 || (n+"").contains("5")) // n is divisible by 5 or n contains 5, output "Buzz"
+				else if (n % 5 == 0 || (n + "").contains("5")) // n is divisible by 5 or n contains 5, output "Buzz"
 					writer.println("Buzz");
 				else // else output n
 					writer.println(n);
@@ -48,6 +47,12 @@ public class FizzWriter {
 			System.out.println("ERROR: Invalid destination file.");
 		}
 	}
+}
+
+
+
+
+
 
 //		// create new file with given name
 //		try {
@@ -71,6 +76,4 @@ public class FizzWriter {
 //		}
 
 
-
-	}
 
