@@ -7,142 +7,115 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class FindAndReplace {
-
-    // Use this scanner for all user input. Don't create additional Scanners with System.in
-    private final Scanner userInput = new Scanner(System.in);
-
-    public static void main(String[] args) throws IOException {
-        FindAndReplace findAndReplace = new FindAndReplace();
-        findAndReplace.run();
-    }
-
-    public void run() throws IOException {
-        /* Your code goes here */
-
-        // ask for the search word and replacement word to establish those attributes
-
+    public static void main(String[] args) {
+// create scanner object
+        Scanner input = new Scanner(System.in);
+// Read all information from the user
         System.out.println("What is the search word?");
-        String searchWord = userInput.nextLine();
-
+        String search = input.nextLine();
         System.out.println("What is the replacement word?");
-        String replacementWord = userInput.nextLine();
-
-        // ask for file path and assign teh file a variable
-        System.out.println("Enter the path of a file");
-        String path = userInput.nextLine();
-        // File ourFile = new File(path);
-//        if (!ourFile.exists()) {
-//            System.exit(1);
-//            System.out.println("We could not find your file, have a good day");
-//        } else
-
-//      Destination of file
-        System.out.println("Enter the path to the files new destination.");
-        String destinationFilePath = userInput.nextLine();
-        //File fileDestination = new File(destinationFilePath);
-//        if (!fileDestination.exists()) {
-//            System.exit(1);
-//        System.out.println("We could not find your destination, have a good day"); }
-//        else
-
-
+        String replacementWord = input.nextLine();
+        System.out.println("What is the source file?");
+        String source = input.nextLine();
+        System.out.println("What is the destination file?");
+        String destination = input.nextLine();
+        input.close();
         try {
-            // create filewriter object
-            FileWriter newFile = new FileWriter(destinationFilePath);
+// create FileWriter object
+            FileWriter fileOut = new FileWriter(destination);
+// create BufferedWriter object
+            BufferedWriter bw = new BufferedWriter(fileOut);
 
-
-            // create bufferedwriter object
-            BufferedWriter fileNew = new BufferedWriter(newFile);
-
-            // Create Scanner object
-            Scanner readFile = new Scanner(new File(path));
-
-            // check next line present or not
-            while (readFile.hasNextLine()) {
-
-                // read each line
-                String firstLine = readFile.nextLine();
-
-                // write data to destination file
-                fileNew.write(firstLine.replace(searchWord, replacementWord));
-                fileNew.newLine();
+// create scanner object
+            Scanner fileRead = new Scanner(new File(source));
+// check next line present or not
+            while (fileRead.hasNextLine()) {
+// read each line
+                String data = fileRead.nextLine();
+// write data to the destination file
+                bw.write(data.replace(search, replacementWord));
+                bw.newLine();
             }
-            fileNew.close();
-            readFile.close();
-
-
+            bw.flush();
+            bw.close();
+            fileRead.close();
+            System.out.println("Data replaced successfully.");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
+
     }
+
 }
 
+//    // Use this scanner for all user input. Don't create additional Scanners with System.in
+//    private final Scanner userInput = new Scanner(System.in);
 //
-//        // now that i have a file object, i can use it to find things related to/inside of the file
+//    public static void main(String[] args) throws IOException {
+//        FindAndReplace findAndReplace = new FindAndReplace();
+//        findAndReplace.run();
+//    }
 //
-//        //inspecting the file system
+//    public void run() throws IOException {
+//        /* Your code goes here */
 //
-//        // see if the file exists, if not, exit program
-//        if (ourFile.exists()) {
-//            System.out.println("We have found your file.");
+//        // ask for the search word and replacement word to establish those attributes
 //
-//            // scanner object to read file
-//           // Scanner readFile = new Scanner(ourFile);
+//        System.out.println("What is the search word?");
+//        String searchWord = userInput.nextLine();
 //
-//            // use buffered reader to file read
-//            BufferedReader reader;
-//            try
-//            { reader = new BufferedReader(new FileReader(ourFile));
+//        System.out.println("What is the replacement word?");
+//        String replacementWord = userInput.nextLine();
 //
-//            // read first line
-//                String firstLine = reader.readLine();
+//        // ask for file path and assign teh file a variable
+//        System.out.println("Enter the path of a file");
+//        String path = userInput.nextLine();
+//        // File ourFile = new File(path);
+////        if (!ourFile.exists()) {
+////            System.exit(1);
+////            System.out.println("We could not find your file, have a good day");
+////        } else
 //
-//                // create a variable for line number
-//                int lineNumber = 0;
+////      Destination of file
+//        System.out.println("Enter the path to the files new destination.");
+//        String destinationFilePath = userInput.nextLine();
+//        //File fileDestination = new File(destinationFilePath);
+////        if (!fileDestination.exists()) {
+////            System.exit(1);
+////        System.out.println("We could not find your destination, have a good day"); }
+////        else
 //
-//                // see if first line contains search word
-//                firstLine.toLowerCase();
 //
-//                if (firstLine.contains(searchWord.toLowerCase()));
-//                {
+//        try {
+//            // create filewriter object
+//            FileWriter newFile = new FileWriter(destinationFilePath);
 //
-//                    // replace search word line replacement word
-//                    searchWord.replace(searchWord, replacementWord);
-//                }
-//                else {
+//
+//            // create bufferedwriter object
+//            BufferedWriter fileNew = new BufferedWriter(newFile);
+//
+//            // Create Scanner object
+//            Scanner readFile = new Scanner(new File(path));
+//
+//            // check next line present or not
+//            while (readFile.hasNextLine()) {
+//
+//                // read each line
+//                String firstLine = readFile.nextLine();
+//
+//                // write data to destination file
+//                fileNew.write(firstLine.replace(searchWord, replacementWord));
+//                fileNew.newLine();
 //            }
+//            fileNew.close();
+//            readFile.close();
 //
 //
-//                 // define the line being read
-//                 String currentLine = readFile.nextLine();
-//
-//                 //break line by space
-//                 String [] lineBrokenUp = currentLine.split(" ");
-//
-//                 // for loop to go through the broken up lines
-//                 String wordFound;
-//                 for (int i = 0; i < lineBrokenUp.length; i++);
-//                 if ()
-//
-//             }
-//
-//        } else {
-//            System.out.println("We cannot find your file, have a good day!");
-//            System.exit(1);
+//        } catch (IOException e) {
+//            e.printStackTrace();
 //        }
-//
-//        // get destination, see if destination exists, if not exit program
-//
-//        File FileDestination = new File(destinationFilePath);
-//
-//        if (FileDestination.exists()) {
-//            System.out.println("We found your destination, creating file");
-//        } else {
-//            System.out.println("We cannot find your file, goodbye!");
-//            System.exit(1);
-//        }
-//
-
+//    }
+//}
 
 
 
