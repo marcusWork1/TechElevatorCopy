@@ -42,39 +42,75 @@
 -- SELECT
 -- Use a SELECT statement to return a literal string
 
+Select  'Frank', 23, '03/06/2023';
+
 
 -- Use a SELECT statement to add two numbers together (and label the result "sum")
 
 
+-- Select 2+2,
+Select '2 times 2 is:', 2 * 2;
+
+Select '2 times 2 is:', 2 * 2 as Calculation -- name the derived column in the result
+;
+-- 'as' creates a new column 
 
 -- SELECT ... FROM
+
+-- select is the columns u want in result
+-- From is the table with those columns
+
 -- Write queries to retrieve...
 
 -- The names from all the records in the state table
-
+Select state_name -- columns to see in resulte
+From state -- table that has columns
+;
 
 -- The names and populations of all cities
-
+Select city_name, population
+From city
+;
 
 -- All columns from the park table
+-- * will select everything in table
+Select *
+From park
+;
 
 
 
 -- SELECT __ FROM __ WHERE
+
+
 -- Write queries to retrieve...
 
 -- The names of cities in California (CA)
+Select city_name, state_abbreviation
+From city
+Where state_abbreviation = 'CA'
+;
 
 
 -- The names and state abbreviations of cities NOT in California
 
-
+Select city_name, state_abbreviation
+From city
+Where state_abbreviation != 'CA'
+;
 -- The names and areas of cities smaller than 25 square kilometers 
+Select city_name, area
+From city
+Where area < 25
+;
 
-
--- The names from all records in the state table that have no assigned census region
-
-
+-- The names from all records in the state table that have no assigned censusregion
+Select state_name, census_region
+From state 
+Where census_region IS null
+;
+-- null represents missing or unknown value, so usual predicates(<, =, >, etc)
+-- will not work. must use "IS" or "IS NOT"^
 -- The names and census regions from all records in the state table that have an assigned census region
 
 
@@ -83,17 +119,37 @@
 -- Write queries to retrieve...
 
 -- The names, areas, and populations of cities smaller than 25 sq. km. with more than 100,000 people
-
+Select city_name, area, population
+From city
+Where area < 25 and population > 100000
+;
 
 -- The names and census regions of all states (and territories and districts) not in the Midwest region (including those that don't have any census region)
-
+Select state_name, census_region
+From state
+Where census_region != 'Midwest' or census_region is null
+;
 
 -- The names, areas, and populations of cities in California (CA) or Florida (FL)
-
-
+Select city_name, area, population 
+From city
+Where state_abbreviation = 'CA' 
+or state_abbreviation = 'FL'
+;
 -- The names, areas, and populations of cities in New England -- Connecticut (CT), Maine (ME), Massachusetts (MA), New Hampshire (NH), Rhode Island (RI) and Vermont (VT)
-
-
+Select city_name, area, population
+from city
+where state_abbreviation = 'CT'
+or state_abbreviation = 'MA'
+or state_abbreviation = 'ME'
+or state_abbreviation = 'NH'
+or state_abbreviation = 'VT'
+or state_abbreviation = 'RI'
+;
+Select city_name, area, population
+from city
+where state_abbreviation IN('CT', 'MA', 'ME', 'NH', 'VT', 'RI')
+;
 
 -- SELECT statements involving math
 -- Write a query to retrieve the names and areas of all parks in square METERS
@@ -115,12 +171,19 @@
 -- Write queries to retrieve...
 
 -- The names of all cities that begin with the letter "A"
-
+Select city_name
+from city
+where city_name LIKE 'A%'
+;
 
 -- The names of all cities that end with "Falls"
 
 
 -- The names of all cities that contain a space
+Select city_name
+from city
+where city_name Like '% %'
+;
 
 
 
