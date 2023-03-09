@@ -109,8 +109,8 @@ order by date_established
 ;
 
 select 'Park Name: ' || park_name ||  ' Year Established: ' 
-                     || date_part('year', date_established
-    as park_info
+                     || date_part('year', date_established)
+   as park_info
 from park
 order by date_established
 ;
@@ -238,17 +238,49 @@ order by city_count     -- use the AS name
 -- "pages" of results.
 -- For instance, to get the first 10 rows in the city table
 -- ordered by the name, you could use the following query.
--- (Skip 0 rows, and return only the first 10 rows from the sorted result set.)
-
-
-
+-- (Skip 0 rows, and return only the first 10 rows from the sorted resu
+select city_name, population
+from city								 
+order by city_name
+offset 20 rows fetch next 10 rows only -- offset indidcates the number of row to skip in result before returning data
+-- fetch indicates how many rows to retrieve form the result(defult is all rows)
+;								  
+								  
 -- SUBQUERIES (optional)
 
--- Include state name rather than the state abbreviation while counting the number of cities in each state,
+-- Include state name rather than the state abbreviation while counting the number of cities in each stat
+
+-- state name is in different table than we need
+-- state name is in the state table, we are using the city table
+-- we can use a join or a sub query
+select -- first select for the city table
+(select state_name -- sub select for state name instead of join
+ from state -- from state table
+where state_abbreviation = city.state_abbreviation), -- match state abbreviation to current city state abbreviation
+count(city_name) as city_count -- city table columns after first select
+from city -- first select from city
+group by state_abbreviation
+order by city_count desc
+;
 
 
 -- Include the names of the smallest and largest parks
+-- classic syntax below!
 
+select park_name 
+from park, -- comma says join park with the largest and smallest park areas as a table 
+(select min(area) as smallest, max(area) as largest
+from park) as areas -- new table with smallest and largest park area in a table
+where park.area = areas.smallest or park.area = areas.largest
+;
+
+-- modern syntax below!!
+select park_name
+from park
+inner join (select min(area) as smallest, max(area) as largest
+from park) as areas
+on park.area = areas.smallest or park.area = areas.largest
+;
 
 -- List the capital cities for the states in the Northeast census region.
 

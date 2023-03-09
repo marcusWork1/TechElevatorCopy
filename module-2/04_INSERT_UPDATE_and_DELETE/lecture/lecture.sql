@@ -58,11 +58,24 @@
 -- INSERT
 
 -- Add Disneyland to the park table. (It was established on 7/17/1955, has an area of 2.1 square kilometers and does not offer camping.)
+Begin transaction; -- make this a unit of work so we can undo it until it is correct 
 
+insert into park
+(park_name, date_established, area, has_camping)
+values('Disneyland', '7/17/1995', 2.1, false)
+;
+rollback; -- end unit of work, change this to a commit when we are sure it is correct
 
 -- Add Hawkins, IN (with a population of 30,000 and an area of 38.1 square kilometers) and Cicely, AK (with a popuation of 839 and an area of 11.4 square kilometers) to the city table.
+insert into city
+(city_name,state_abbreviation, population, area)
+values('Hawkins', 'IN', 30000, 38.1), ('Cicely', 'AK', 839, 11.4)
+;
 
-
+select city_name
+from city
+where state_abbreviation = 'IN'
+;
 -- Since Disneyland is in California (CA), add a record representing that to the park_state table.
 
 
@@ -70,7 +83,12 @@
 -- UPDATE
 
 -- Change the state nickname of California to "The Happiest Place on Earth."
-
+update state
+set state_nickname = 'The Happiest Place on Earth'
+where state_abbreviation = 'CA'
+; 
+select state_nickname from state where state_abbreviation = 'CA'
+;
 
 -- Increase the population of California by 1,000,000.
 
@@ -85,7 +103,10 @@
 -- DELETE
 
 -- Delete Hawkins, IN from the city table.
-
+delete from city
+where city_name = 'Hawkins' and state_abbreviation = 'IN'
+;
+select * from city where city_name = 'Hawkins';
 
 -- Delete all cities with a population of less than 1,000 people from the city table.
 
