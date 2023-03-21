@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.techelevator</groupId>
-	<artifactId>file-io-part2-exercise-final</artifactId>
+	<artifactId>file-io-part1-exercise-final</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
