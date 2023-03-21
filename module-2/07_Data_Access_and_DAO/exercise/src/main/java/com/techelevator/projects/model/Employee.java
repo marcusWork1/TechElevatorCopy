@@ -7,8 +7,8 @@ public class Employee {
 	private int departmentId;
 	private String firstName;
 	private String lastName;
-	private LocalDate birthDate;
-	private LocalDate hireDate;
+	private LocalDate birthDate; // hold an SQL date value
+	private LocalDate hireDate; // hold an SQL date value
 
 	public Employee() {}
 

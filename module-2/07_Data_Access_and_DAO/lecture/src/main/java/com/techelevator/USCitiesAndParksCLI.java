@@ -20,6 +20,8 @@ public class USCitiesAndParksCLI {
     private final ParkDao parkDao;
 
     public static void main(String[] args) {
+        // defines the data source to be used by all database calls it uses
+        // the database is the program it wants to use
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost:5432/UnitedStates");
         dataSource.setUsername("postgres");

@@ -3,8 +3,16 @@ package com.techelevator.projects.dao;
 import com.techelevator.projects.model.Department;
 
 import java.util.List;
+// this is a DAO interface for jDBC access
+// typically it's named the tablenameDAO
 
-public interface DepartmentDao {
+/// define the CRUD methods required for access using this dao
+// create
+// read: SQL READ
+// update: SQL UPDATE
+// delete: SQL DELETE
+public interface
+DepartmentDao {
 
 	/**
 	 * Get a department from the datastore that belongs to the given id.
@@ -13,6 +21,7 @@ public interface DepartmentDao {
 	 * @param departmentId the department id to get from the datastore
 	 * @return a filled out department object
 	 */
+	// read a department from the table by dept id and return a dept object
 	public Department getDepartment(int departmentId);
 
 	/**

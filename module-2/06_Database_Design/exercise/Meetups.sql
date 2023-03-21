@@ -102,14 +102,70 @@ values ('Sporting_Event', 'this is where the athletes meet!','03/13/2023 10:30:0
 ;
 insert into event_table 
 (event_name, event_description, event_date_time, event_duration, group_number )
-values ('Civilian_event', 'this is where the Civilians meet!','03/14/2023 10:30:00', 2, 1 )
+values ('Civilian_event', 'this is where the Civilians meet!','03/14/2023 10:30:00', 2, 3 )
 ;
 insert into event_table 
 (event_name, event_description, event_date_time, event_duration, group_number )
-values ('Showpeople_Event', 'this is where the Show people meet!','03/15/2023 10:30:00', 2, 1 )
+values ('Showpeople_Event', 'this is where the Show people meet!','03/15/2023 10:30:00', 2, 2 )
 ;
 insert into event_table 
 (event_name, event_description, event_date_time, event_duration, group_number )
-values ('Everyone_event', 'this is where the everyone meets!','03/15/2023 13:30:00', 4, 1 )
+values ('Everyone_event', 'this is where the everyone meets!','03/15/2023 13:30:00', 4, 3 )
 ;
-
+insert into member_group
+(group_number, member_number)
+values(1, 15)
+;
+insert into member_group
+(group_number, member_number)
+values(1, 17)
+;
+insert into member_group
+(group_number, member_number)
+values(1, 19)
+;
+insert into member_group
+(group_number, member_number)
+values(2, 14)
+;
+insert into member_group
+(group_number, member_number)
+values(2, 20)
+;
+insert into member_group
+(group_number, member_number)
+values(2, 18)
+;
+insert into member_group
+(group_number, member_number)
+values(3, 1)
+;
+insert into member_group
+(group_number, member_number)
+values(3, 16)
+;
+update event_table
+set event_name = 'Creator event'
+where event_name like 'Every%'
+;
+update event_table
+set event_description = 'This is for the sole creator'
+where event_description like'%veryone%'
+;
+insert into member
+( last_name, first_name, email_address, phone_number, date_of_birth, reminder_email)
+Values ( 'Patterson', 'Marcus', 'lakotawest8@gmail.com', '(513)259-9611', '02/21/2001', true )
+returning member_number
+;
+insert into interest_group
+(group_name)
+Values('Creator')
+;
+insert into member_group
+(group_number, member_number)
+values(4, 21)
+;
+update event_table
+set group_number = 4
+where event_name like 'Creat%'
+;

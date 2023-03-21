@@ -19,7 +19,9 @@ public class Tutorial {
     public static void main(String[] args) {
         BasicDataSource dataSource = new BasicDataSource();
         // Step One: Configure the database connection
-        
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/PizzaShop");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres1");
 
 
         Tutorial tutorial = new Tutorial(dataSource);

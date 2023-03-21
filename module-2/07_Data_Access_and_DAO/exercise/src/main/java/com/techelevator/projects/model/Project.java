@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Project {
 	private int id;
 	private String name;
-	private LocalDate fromDate;
-	private LocalDate toDate;
+	private LocalDate fromDate; // hold an SQL date value
+	private LocalDate toDate; // hold an SQL date value
 
 	public Project() {}
 

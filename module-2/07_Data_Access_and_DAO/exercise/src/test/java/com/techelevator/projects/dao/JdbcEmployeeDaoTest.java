@@ -30,6 +30,11 @@ public class JdbcEmployeeDaoTest extends BaseDaoTest {
         sut = new JdbcEmployeeDao(dataSource);
     }
 
+    /**
+     * Gets all employees from the datastore and returns them in a List
+     *
+     * @return all the employees as Employee objects in a List
+     */
     @Test
     public void getAllEmployees_returns_list_of_all_employees() {
         List<Employee> employees = sut.getAllEmployees();
