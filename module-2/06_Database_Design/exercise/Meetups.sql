@@ -1,3 +1,8 @@
+DROP Table IF EXISTS Member CASCADE;
+DROP Table IF EXISTS Interest_Group CASCADE;
+DROP Table IF EXISTS Event_table CASCADE;
+DROP Table IF EXISTS Member_Group CASCADE;
+
 create table Member
 (Member_Number serial not null, -- system will generate member id
  Last_name char varying (100) not null, -- max 100 characters for last name
@@ -7,12 +12,12 @@ First_name char varying (100) not null,
  Phone_Number char varying (16) not null ,
  Date_of_Birth date not null,
  Reminder_Email boolean not null
-)
+);
 create table Interest_Group
 (Group_Number serial not null,
  group_name char varying (50) not null,
  Constraint PK_Interest_Group_Group_Number primary key (Group_Number)
-)
+);
 create table Event_table
 (Event_Number serial not null,
  Constraint PK_Event_Table_Event_Number primary key(Event_Number),
@@ -21,12 +26,12 @@ create table Event_table
  Event_date_time timestamp not null,
  Event_Duration integer not null,
  Group_Number int not null
-)
+);
 
 Alter Table Event_table
 Add foreign key (Group_Number)
 References Interest_Group(Group_Number)
-
+;
 
 create table Member_Group
 (Group_Number int not null,
@@ -43,6 +48,22 @@ Add foreign key (Member_Number)
 References Member(Member_Number)
 ;
 
+insert into interest_group
+(group_name)
+Values('Sports')
+;
+insert into interest_group
+(group_name)
+values ('shows')
+;
+insert into interest_group
+(group_name)
+values('civilians')
+;
+insert into interest_group
+(group_name)
+Values('Creator')
+;
 
 insert into member
 ( last_name, first_name, email_address, phone_number, date_of_birth, reminder_email)
@@ -72,7 +93,6 @@ INSERT INTO member (last_name,first_name,email_address,phone_number,date_of_birt
 VALUES('Victor', 'Vaughn, DOOM', 'elpresidente.latveria.gov', '(555)666-5555','02/26/1950' , false)
 returning member_number
 ;
-
 insert into member
 ( last_name, first_name, email_address, phone_number, date_of_birth, reminder_email)
 Values ( 'brady', 'goat', 'tombrady12@gmail.com', '(818)265-4836', '05/20/1940', true )
@@ -83,19 +103,13 @@ INSERT INTO member (last_name,first_name,email_address,phone_number,date_of_birt
 VALUES('Lebowski', 'Jefferey', 'elduderino@netscape.com', '(323)555-5555','12/31/1950' , true)
 returning member_number
 ;
+insert into member
+( last_name, first_name, email_address, phone_number, date_of_birth, reminder_email)
+Values ( 'Patterson', 'Marcus', 'lakotawest8@gmail.com', '(513)259-9611', '02/21/2001', true )
+returning member_number
+;
 
-insert into interest_group
-(group_name)
-Values('Sports')
-;
-insert into interest_group
-(group_name)
-values ('shows')
-;
-insert into interest_group
-(group_name)
-values('civilians')
-;
+
 insert into event_table 
 (event_name, event_description, event_date_time, event_duration, group_number )
 values ('Sporting_Event', 'this is where the athletes meet!','03/13/2023 10:30:00', 2, 1 )
@@ -114,35 +128,39 @@ values ('Everyone_event', 'this is where the everyone meets!','03/15/2023 13:30:
 ;
 insert into member_group
 (group_number, member_number)
-values(1, 15)
+values(1, (Select member_number From member where first_name ILIKE '%ebron%' ))
 ;
 insert into member_group
 (group_number, member_number)
-values(1, 17)
+values(1, (Select member_number From member where first_name ILIKE '%rico%'  ))
 ;
 insert into member_group
 (group_number, member_number)
-values(1, 19)
+values(1, (Select member_number From member where first_name ILIKE '%jerry%' ))
 ;
 insert into member_group
 (group_number, member_number)
-values(2, 14)
+values(2, (Select member_number From member where first_name ILIKE '%oseph%' ))
 ;
 insert into member_group
 (group_number, member_number)
-values(2, 20)
+values(2, (Select member_number From member where first_name ILIKE '%patric%' ))
 ;
 insert into member_group
 (group_number, member_number)
-values(2, 18)
+values(2, (Select member_number From member where first_name ILIKE '%DOOM%' ))
 ;
 insert into member_group
 (group_number, member_number)
-values(3, 1)
+values(3, (Select member_number From member where first_name ILIKE '%goat%' ))
 ;
 insert into member_group
 (group_number, member_number)
-values(3, 16)
+values(3, (Select member_number From member where first_name ILIKE '%jeff%' ))
+;
+insert into member_group
+(group_number, member_number)
+values(4, (Select member_number From member where first_name ILIKE '%arcus%' ))
 ;
 update event_table
 set event_name = 'Creator event'
@@ -152,19 +170,7 @@ update event_table
 set event_description = 'This is for the sole creator'
 where event_description like'%veryone%'
 ;
-insert into member
-( last_name, first_name, email_address, phone_number, date_of_birth, reminder_email)
-Values ( 'Patterson', 'Marcus', 'lakotawest8@gmail.com', '(513)259-9611', '02/21/2001', true )
-returning member_number
-;
-insert into interest_group
-(group_name)
-Values('Creator')
-;
-insert into member_group
-(group_number, member_number)
-values(4, 21)
-;
+
 update event_table
 set group_number = 4
 where event_name like 'Creat%'
