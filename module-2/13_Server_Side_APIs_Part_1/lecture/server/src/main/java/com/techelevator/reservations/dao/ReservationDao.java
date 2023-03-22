@@ -5,6 +5,7 @@ import com.techelevator.reservations.model.Reservation;
 
 public interface ReservationDao {
 
+    // return all reservations
     List<Reservation> findAll();
 
     List<Reservation> findByHotel(int hotelId);
