@@ -1,12 +1,30 @@
 package com.techelevator.reservations.model;
 
+// the class designer (class creator) decides how data is validated and what is valid
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
+// spring bean validation annotations are used to indicate valid values
+// spring will automatically validate data IF server tells it to
 public class Reservation {
 
     private int id;
+    @Min(value=1, message="The hotel id is required and must be 1 or more")
     private int hotelId;
+
+    @NotBlank(message="full name is required for reservation")
     private String fullName;
+
+    @NotBlank(message="check in date is required for reservation")
     private String checkinDate;
+
+    @NotBlank(message="check out date is required for reservation")
     private String checkoutDate;
+
+    @Min(value = 1, message="the number of guest must be greater than 1")
+    @Max(value = 5, message = "the max guest number is 5")
     private int guests;
 
     public Reservation(int id, int hotelId, String fullName, String checkinDate, String checkoutDate, int guests) {
