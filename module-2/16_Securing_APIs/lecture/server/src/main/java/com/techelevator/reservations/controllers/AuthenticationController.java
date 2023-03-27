@@ -32,7 +32,15 @@ public class AuthenticationController {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
     }
 
-    @PostMapping("/login")
+    // handles a post for the /login path with JSON for the loginDTO POJO
+    // LoginDto POJO has 3 instance variables: Username, password, rememberMe
+    //              JSON wih the request must have attributes with the same name
+
+    // returns a response entity <class-for-body>
+    // a ResponseEntity is a generic HTTP response
+    // used when u don't want to just return a pojo
+
+    @PostMapping("/login") // same as @requestMapping (path ="/login", method=requestMethod.post)
     public ResponseEntity<TokenDto> authorize(@Valid @RequestBody LoginDto loginDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken =

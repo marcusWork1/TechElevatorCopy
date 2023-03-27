@@ -7,13 +7,27 @@ import com.techelevator.reservations.dao.ReservationDao;
 import com.techelevator.reservations.model.Hotel;
 import com.techelevator.reservations.model.Reservation;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+//Controller handles all requests for the Hotel resource
 
+
+// whos
+/// allowed to do these things
+
+//Create - createReservation - anyone can do this... user and admin
+//Read - filterByStateCity, get, listReservations, listHotels, ListReservationsByHotel - anyone
+//update - updateReservation - anyone
+//delete - deleteReservation - admin only
+
+// use SpEL to establish access to the paths
+
+@PreAuthorize("isAuthenticated()") // anyone logged in can access processes in this class
 @RestController
 public class HotelController {
 
@@ -131,6 +145,8 @@ public class HotelController {
      *
      * @param id
      */
+    // only those with role admin can access this path
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/reservations/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id) {

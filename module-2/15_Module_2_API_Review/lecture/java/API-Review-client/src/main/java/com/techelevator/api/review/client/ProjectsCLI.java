@@ -1,8 +1,11 @@
 package com.techelevator.api.review.client;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import io.cucumber.java.hu.De;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import com.techelevator.api.review.client.model.Department;
@@ -15,8 +18,17 @@ import com.techelevator.api.review.client.model.jdbc.JDBCDepartmentDAO;
 import com.techelevator.api.review.client.model.jdbc.JDBCEmployeeDAO;
 import com.techelevator.api.review.client.model.jdbc.JDBCProjectDAO;
 import com.techelevator.api.review.client.view.Menu;
+import org.apiguardian.api.API;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.RestClientResponseException;
+import org.springframework.web.client.RestTemplate;
 
 public class ProjectsCLI {
+
+
 	
 	private static final String MAIN_MENU_OPTION_EMPLOYEES = "Employees";
 	private static final String MAIN_MENU_OPTION_DEPARTMENTS = "Departments";
@@ -60,7 +72,11 @@ public class ProjectsCLI {
 																	 PROJ_MENU_OPTION_ASSIGN_EMPLOYEE_TO_PROJECT,
 																	 PROJ_MENU_OPTION_REMOVE_EMPLOYEE_FROM_PROJECT,
 																	 MENU_OPTION_RETURN_TO_MAIN };
-	
+	// rest template for api call
+	final RestTemplate theApiServer = new RestTemplate();
+	String API_BASE_URL = "http://localhost:8080/department";
+	String API_BASE_URL2 = "https://641ccee61a68dc9e4611ab24.mockapi.io/franksapi/review15/department";
+
 	private Menu menu;
 	private DepartmentDAO departmentDAO;
 	private EmployeeDAO employeeDAO;
@@ -122,7 +138,34 @@ public class ProjectsCLI {
 		String newDepartmentName = getUserInput("Enter new Department name");
 		Department newDepartment = new Department();
 		newDepartment.setName(newDepartmentName);
-		newDepartment = departmentDAO.createDepartment(newDepartment);
+
+
+		// replace the JDBC DAO call from database with call to external API
+		// to add the department to the external server resource
+		//newDepartment = departmentDAO.createDepartment(newDepartment);
+
+		// HTTP POST for adding
+		// the data to be added is sent in the request body
+		/// we need to define a header & an entity to connect java object
+		// with the data and header
+
+		Department departmentAdded = null;
+
+		HttpHeaders addHeader = new HttpHeaders();
+
+		addHeader.setContentType(MediaType.APPLICATION_JSON);
+
+		HttpEntity<Department> entityHeader = new HttpEntity<>(newDepartment, addHeader);
+
+		try {
+			departmentAdded = theApiServer.postForObject(API_BASE_URL, entityHeader, Department.class);
+		} catch (RestClientResponseException e) {
+			System.out.println("Unable to add department");
+		} catch (ResourceAccessException e) {
+			System.out.println("Unable to add department");
+		}
+
+
 		System.out.println("\n*** "+newDepartment.getName()+" created ***");
 	}
 	
@@ -140,17 +183,32 @@ public class ProjectsCLI {
 		}
 	}
 
-	private void handleListAllDepartments() {
+	private void handleListAllDepartments() { // changing source of data
+		// replacing DAO access to get departments with API call
 		printHeading("All Departments");
-		List<Department> allDepartments = departmentDAO.getAllDepartments();
-		listDepartments(allDepartments);
+		//List<Department> allDepartments = departmentDAO.getAllDepartments();
+		//listDepartments(allDepartments);
+
+		// rest template getforobject only returns arrays
+		Department[] allDepartments = theApiServer.getForObject(API_BASE_URL, Department[].class);
+
+		listDepartments(Arrays.asList(allDepartments)); // convert array to list, this method wanted a list
+
 	}
 
 	private void handleDepartmentSearch() {
+		//printHeading("Department Search");
+		// replacing DAO search to api search
+
+		//String departmentSearch = getUserInput("Enter department id to search for");
+		//List<Department> departments = departmentDAO.searchDepartmentsByName(departmentSearch);
 		printHeading("Department Search");
-		String departmentSearch = getUserInput("Enter department name to search for");
-		List<Department> departments = departmentDAO.searchDepartmentsByName(departmentSearch);
-		listDepartments(departments);
+		String departmentSearch = getUserInput("Enter department id to search for");
+
+		Department departments = theApiServer.getForObject(API_BASE_URL + "/" + departmentSearch,
+				Department.class);
+
+		System.out.println(departments);
 	}
 	
 	private void handleDepartmentEmployeeList() {

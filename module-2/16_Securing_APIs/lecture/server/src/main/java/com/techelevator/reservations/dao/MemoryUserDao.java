@@ -13,10 +13,15 @@ import java.util.stream.Stream;
 
 import java.util.Optional;
 
+// Hold the 'Database" of users. would most likely be a table in the real world
+
 @Component
 public class MemoryUserDao implements UserDao {
 
+    // file with user info loaded into users arraylist at start
     private final String USERS_DATA_FILE = "users.txt";
+
+    // user info held in array list
     private static List<User> users = new ArrayList<>();
 
     public MemoryUserDao() {
