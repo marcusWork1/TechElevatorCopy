@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - Reservations</title>
+    <link rel="stylesheet", href="styles.css"/>
+</head>
+<body>
+    <header> <!-- header tag identifies what should be at the top of the page                  -->
+        <h1>Bits & Bytes</h1> <!-- h1 tag identifies a level 1 header (biggest on page)        -->
+        <!-- p tag represents text you want to treat as unit (paragraph)                       -->
+        <p>Welcome to the internet's best (non-italian) restaurant</p>
+    </header>
+    <nav> <!-- contains navigations link to other parts of teh page or other pages -->
+        <!-- the <a (anchor tag) is used to provided links to other resources      -->
+        <!-- href="" specifies the link you want to do to                          -->
+        <!-- specify text to displayed for the link between the <a> and </a> tags  -->    
+        <a href="index.html">Back to Menu</a>
+
+    </nav>
+    <main>
+        <h2>Please enter reservation information</h2>
+        <!-- use a form to collect information for a user and send it to API resource   -->
+        <!-- form will automatically sned the data to an API server                     -->
+        <!--      unless you tell it not too (later in class)                           -->
+        <!-- you need to know/have an API resouce to send the form data too             -->
+        <!-- if you don't have an API resource code anything you want until you get one -->
+        
+        <!-- method="" is the HTTP method you want form to use when sending data to API resource -->
+        <!-- method="POST" is most common as html forms are used to collect data to be stored    -->
+        <!-- action="" is the URL to the API resource                                            -->
+
+        <!-- usually each data value to be collected is put in its own <div tag                  -->
+        <!-- <div provides a style-able unit of the page (does not impact display or processing) -->    
+       
+        <!-- <label provides a descrition for input element           -->
+        <!--  for="" name of the input element the label applies to   --> 
+        <!--  text for the labee goes between the <label and </label> -->      
+
+        <!-- <input solicits data from the user                                                    -->
+        <!-- type="" is the type of input you want (text, date, time, checkbox, etal )             -->
+        <!-- name="" is the name of the attribute on the API resource                              -->
+        <!-- id="" is the name you have assigned to the input element, used in the for= of a label -->
+
+        <form method="POST" action="https://642ab5e2b11efeb759a08c31.mockapi.io/api/reservations">
+            <div> <!-- Get the name for the reservation -->
+                <label for="personName">Name for reservation: </label>
+                <input  id="personName" type="text" name="reservationName"/>
+            </div>
+            <div> <!-- Get the number of guests for the reservation -->
+                <label for="guests">Number of Guests </label>
+                <input  id="guests" type="number" name="numberOfGuests"/>
+            </div>
+            <div> <!-- Get the date for the reservation -->
+                <label for="resDate">Date:</label>
+                <input  id="resDate" type="date" name="reservationDate"/>
+            </div>
+            <div> <!-- Get the time for the reservation -->
+                <label for="resTime">Time: </label>
+                <input  id="resDate" type="time" name="reservationTime"/>
+            </div>
+            <div> <!-- Get the special occasion indicator for the reservation -->
+                <label for="special">Special Occasion? </label>
+                <input  id="special" type="checkbox" name="specialOccasion"/>
+            </div>
+            <div> <!-- define a submit button to cause data be sent to API resource -->
+                <input  type="submit" />
+            </div>
+        </form>
+    </main>
+</body>
+</html>

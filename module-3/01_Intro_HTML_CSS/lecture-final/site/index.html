@@ -1,0 +1,58 @@
+<!-- anything starting with less-than-sign exclamation-point is a directive to the browser -->
+<!-- This is an HTML Comment -->
+<!-- html is defined with tags - everything in html has a start-tag and an end-tag             -->
+<!-- a start-tag if <word   identifies an html element                                         -->
+<!-- and end tag is </word where the word matches the start tag                                -->
+<!DOCTYPE html> <!-- Tell the browser this file contains HTML tags - optional in current world -->
+<html lang="en"><!-- identfies the start of the html for this web page and use english         -->
+<head> <!-- Contains information you want browser to know about this html/page (not displayed) -->           
+    <meta charset="UTF-8"> <!-- the meta tag provides information to the browser               -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franks First Page</title> <!-- words displayed in the tab of the web page           -->
+
+    <!-- use a link tag to connect a CSS file to this html       -->
+    <!--     rel=  indicates what is in the file you are linking -->
+    <!--     href= indicates the name of the file to link        -->
+    <link rel="stylesheet", href="styles.css"/>
+
+</head>
+<body> <!-- the element containing the main part of the page - what is displayed in browser    -->
+    <header> <!-- header tag identifies what should be at the top of the page                  -->
+        <h1>Bits & Bytes</h1> <!-- h1 tag identifies a level 1 header (biggest on page)        -->
+        <!-- p tag represents text you want to treat as unit (paragraph)                       -->
+        <p>Welcome to the internet's best (non-italian) restaurant</p>
+    </header>
+
+    <nav> <!-- contains navigations link to other parts of teh page or other pages -->
+        <!-- the <a (anchor tag) is used to provided links to other resources      -->
+        <!-- href="" specifies the link you want to do to                          -->
+        <!-- specify text to displayed for the link between the <a> and </a> tags  -->    
+        <a href="reservations.html">Make a reservation</a>
+
+    </nav>
+   
+    <main> <!-- optional container for the primary information on page    -->
+        <h2>Menu</h2>
+        <section> <!-- optional - major parts of page - provide a convenient for styling with CSS -->
+            <h3>Lunch</h3>
+            <p>Full Stack Sandwich</p>
+            <!-- <img includes an image on the page                          -->
+            <!-- the src= attribute of the <img tag is the path to the image -->
+            <!-- the paths are considered relative to the project folder     -->
+            <img src="images/menu/lunch/full-stack-sandwich.png"/> <!-- note use of shorthand end tag -->
+                                                                   <!-- / at end of start tag content -->
+            <p>Universal Serial Burger</p>
+            <img src="images/menu/lunch/USBurger.png"/>
+        </section>
+        <section> <!-- optional - major parts of page - provide a convenient for styling with CSS -->
+            <h3>Dinner</h3>
+            <p>Rack of RAM</p>
+            <img src="images/menu/dinner/rack-of-ram.png"/>
+            <p>Vegetable Array</p>
+            <img src="images/menu/dinner/array-of-vegetables.png"/>
+         </section>
+    </main>
+
+</body>
+</html>  <!-- marks the end of the html element-->
