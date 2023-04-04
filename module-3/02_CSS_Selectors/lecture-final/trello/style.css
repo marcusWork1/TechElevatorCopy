@@ -1,0 +1,158 @@
+/* styling for overall web page */
+html {  /* style everything html tag element */
+    height: 100%;  /* we want the page to fill 100% of the browser display (viewport) */
+    font-size: 16px; /* set default font size to 16px                                 */
+}
+
+* { /* styling for every element in the document (the web page)  */
+    box-sizing: border-box; /* include the margin and border in the box size - easier placement */
+    user-select: none;      /* text is not user selectable                                      */
+}
+
+body { /* specify styling for primary display area of the page    */
+    font-family: "Raleway", sans-serif; /* use the Raleway font if  you have it, otherwise any sans-serif font*/
+    /* linear-gradient will gradually change from the first color to second in direction given */
+    background-image: linear-gradient(to bottom, gray, lightgray); /*  url("./images/doggie.jpg"); */
+
+    background-repeat: no-repeat;  /* do not repeat the background image to fill page           */
+    background-attachment: fixed;  /* do not scroll the background image - it position is fixed */
+    background-size: 100%;         /* make background image fill the screen                     */
+    white-space: nowrap;           /* collapse whitespaceinto a single whitespace. Text not wrap. */
+}
+
+div.trello-list {       /* style the <div with the class="trello-list" */
+/* .trello-list  {  */  /* style everything with class="trello-list"   */
+    background-color:#ddd;/* hex code for the color we want          */
+    width: 300px;           /* set width of teh box                    */
+    border-radius: 2px 3px; /* slightly round corners of the box       */
+    display : inline-block; /* display across the screen (inline-block)*/
+    margin-right: 10px;
+    vertical-align: top;
+}
+div.trello-list h2 {   /* style the h2 in all divs with class="trello-list" */
+    font-size: 1rem;   /* set font size to 1rem                             */
+    margin: 8px;       /* move over slightly from the edge                  */
+    font-weight: bold; /* bolded text                                       */
+}
+
+div.trello-list ol {
+    margin: 0;
+    padding: 0;
+}
+
+div.trello-list li {      /* style all the list items in the div with class="trello-list"    */
+    list-style: none;     /* remove the list enumerators (numbers) from list items           */
+    background-color: white;
+    padding: 8px;         /* add spacing inside the box                                      */
+    margin-bottom: 10px;  /* separate the list items from each other                         */
+    font-size: .9rem;     /* slightly smaller than h2 size (1rem)                            */
+    border-radius: 1px;   /* very slight rounding of corners                                 */
+    white-space: normal;  /* collapse whitespaceinto a single whitespace. Text will wrap.    */
+}
+div.trello-list li:hover { /* use pseudo class hover to style when cursor move over the ietm */
+    background-color: #f5f6f7; /* hex code for slightly grayer white */
+    color : blue;       /* change color of list item                */
+}
+
+div.trello-list{ /* style the same selected element multiple times in the CSS   */
+                 /* while it's ok - it can lead to confusing CSS and/or problem */
+                 /* better practice is to put all styling in one place for a selector */
+    vertical-align: top;
+}
+
+/* Style for the header */
+header {
+    position: fixed;
+    top: 0;
+    height: 50px;
+}
+
+header > p {
+    font-size: .9rem;
+    padding-left: 5px;
+}
+
+header > h1,  /* style all h1 elements that are children of a header element*/
+header > p {  /* and all p elements that are children of a header element   */
+
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+    color: white;
+    padding-right: 20px;
+    border-right: 1px solid white; /* single, thin white vertical bar on the right side*/
+}
+header > h1 {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+div.trello-list a {
+    /* Layout */ 
+    display: block;
+
+    /* Look */
+    text-decoration: none;
+    color: #888;
+
+    /* Spacing */ 
+    padding: 8px 0px 8px 5px; /* top right bottom left */
+
+    font-size: 0.85rem;
+}
+
+div.trello-list a:hover {
+    background-color: rgba(9, 45, 66, .1);
+}
+
+
+.labels span {
+    display: inline-block;
+    vertical-align: top;
+    width: 35px;
+    height: 8px;
+    border-radius: 3px;
+}
+
+.label.pathway {
+    background-color: red;    
+}
+
+.label.individual {
+    background-color: green;
+}
+
+.label.pair {
+    background-color: teal;
+}
+
+.label.general {
+    background-color: orange;
+}
+
+main {
+    margin-top: 50px;
+}
+div.trello-list li:last-child {
+    margin-bottom: 0px;
+}
+
+
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #BBB;    
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+body::webkit-scrollbar-thumb:hover {
+    background: #888;    
+}
