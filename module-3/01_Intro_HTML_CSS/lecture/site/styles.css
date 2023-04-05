@@ -1,0 +1,25 @@
+/* a CSS comment starts with slash-asterisk and ends with asterisk-slash */
+/* multiple line 
+comments are 
+allowed just like java */
+/* 
+To apply CSS to an element in the html
+
+Be sure you connect html with css file
+
+1. Identify the element you want to style(tag name)
+2. code tag-name {
+3. code the CSS styling to apply to the tag(don't forget ;)
+4. close the }
+/* style the h1 tag in html*/
+h1{
+    color: rebeccapurple;
+    font-size: 32px;
+}
+body {
+    
+    font-family: Arial, Helvetica, sans-serif;
+}
+img {
+    height : 200px; /*set the height of image*/
+}

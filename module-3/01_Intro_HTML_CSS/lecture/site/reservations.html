@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header> <!-- header element at top of page-->
+        <h1> Spring Vacation</h1> <!-- h1 identifies a level 1 header-->
+        <!-- p tag represents a paragraph element-->
+        <p> Welcome to our next vacation</p>
+     
+         </header>
+         <nav> <!-- contains navigation link to other parts of the page or other pages
+         --> 
+         <a href="index.html">Back to trip details</a>
+     
+     
+     </nav>
+     <main> 
+        <h2> Please RSVP </h2>
+        <!-- create API resource w url to collect data from baby
+        method="POST" is the most common to collect data from html forms
+    usually each data value collected is put in its own
+<div tag. div provides a style able unit of the page(does not impact display)
+input name = must match attricute on the API resource-->
+
+
+        <form method="POST" action="https://cf735fcc-638c-43b2-a6e1-0d99c262a917.mock.pstmn.io">
+    <div><!-- get the name for the reservation-->
+        <label for="personName">Name for RSVP:</label>
+            <input id="personName" type="" name="reservationName"
+    </div>
+    <div><!-- Are you sure?-->
+        <label for="areYouSure">Are you sure?</label>
+            <input id="yesOrNo" type="" name="reservationDate"
+    </div>
+    <div><!-- what are you most excited for?-->
+        <label for="excitedFor">What are you most excited for?</label>
+            <input id="excited" type="" name="reservationName"
+    </div>
+    <div><!-- Define a submit button for api resource-->
+            <input type="submit"/>
+    </div>
+    </form>
+    </main>
+    
+</body>
+</html>

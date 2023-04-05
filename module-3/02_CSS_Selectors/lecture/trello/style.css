@@ -1,0 +1,48 @@
+html{
+height:100%;
+font-size: 16px;
+
+}
+
+* {/* asterisk is styling for every element */
+    box-sizing: border-box; /* include the margin and boarder in box sizw
+     */
+
+
+}
+
+body {/* styling for primary display*/
+    font-family: "Raleway", sans-serif; /* use railway, if not available then any sans serif */
+    background-image: linear-gradient(to bottom, gray, lightgray );
+/* linear gradient will gradually change from first color to second in direction given
+*/
+background-repeat: no-repeat; 
+background-size: 100%; /* background fils screen */
+background-attachment: fixed; /* do not scroll the background image, position is fixed*/
+
+}
+div.trello-list { /* styles everything with id = trello list */
+
+    background-color: #ddd;
+    width: 300px;
+    border-radius: 2px 3px ;
+}
+div.trello-list h2{
+    font-size: 1rem;
+    margin: 8px;
+    font-weight: bold;
+}
+
+div.trello-list li{ /* style all list items in trello list*/
+
+    list-style: none; /* remove the list numbers from list items */
+    background-color: white;
+    padding: 8px; /* separate list items from each other a little */
+    margin-bottom: 10px;
+    font-size: .9rem; 
+    border-radius: 1px; /* slight rounding of corner */
+}
+div.trello-list li:hover{ /* user pseudo class hover to style when cursor moves over the list item */
+
+background-color: #f5f6f7;
+}

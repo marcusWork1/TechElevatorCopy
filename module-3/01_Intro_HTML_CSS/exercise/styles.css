@@ -1,0 +1,53 @@
+h1{
+    background-color: black;
+    color: whitesmoke;
+    text-align: center;
+ 
+}
+body{
+    background-color: burlywood;
+}
+p{
+    text-align: center;
+}
+section#facts-section > h2{
+    font-size: 20px;
+    text-decoration-line: underline;
+    text-align: center;
+}
+div.image-class{
+    align-content: center;
+/* not working for image alignment */
+}
+img{
+    height: 300px;
+    
+}
+/* div.sleep-facts-class h2{
+    font-size: 20px;
+    text-decoration-line: underline;
+    text-align: center;
+    
+} */
+section#quotes-section > h2{
+    font-size: 20px;
+    text-align: center;
+    text-decoration-line: underline;
+}
+section#quotes-section > blockquote{
+    font-style: italic;
+
+}
+section#quotes-section > p{
+    text-align: center;
+}
+section#links-section > h2{
+    font-size: 20px;
+    text-decoration-line: underline;
+}
+section#links-section > ul{
+
+}
+section#links-section ul > li{
+    
+}

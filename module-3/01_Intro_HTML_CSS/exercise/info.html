@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Page</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+    <header> <!--header element at top of page-->
+        <h1>Welcome to the sleep survey!</h1>
+        <p>Take your time and fill out all blanks</p>
+    </header>
+    <nav><!-- navigation back to information page --> 
+    <a href="index.html">Return back to information</a>
+    </nav>
+    <main><!--beginning of main-->
+        <h2>Please begin</h2>
+        <form method="POST" action="randomsite">
+        <div><!-- get name for survey--> 
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" required>
+        </div>
+        <div><!-- get email for survey--> 
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required>
+            </div>
+            <div><!-- get date of birth--> 
+                <label for="date-of-birth">Date of birth</label>
+                <input id="date-of-birth" type="date" name="date-of-birth">
+                </div>
+                <div><!-- get favorite color--> 
+                    <label for="favorite-color">Favorite color</label>
+                    <input id="favorite-color" type="color" name="favorite-color">
+                    </div>
+                    <div><!-- get lucky number--> 
+                        <label for="lucky-number">Lucky number</label>
+                        <input id="lucky-number" type="number" name="lucky-number">
+                        </div>
+                        <div><!-- confirmation--> 
+                            <label for="confirmation">Confirmation</label>
+                            <input id="confirmation" type="checkbox" name="confirmation"
+                        </div>
+                            
+                            <div><!-- define a submit button-->
+                            <input type="submit"></div>
+                            </form>
+
+
+
+
+    </main>
     
 </body>
 </html>
