@@ -10,9 +10,22 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const DAYS_PER_WEEK = 7;
+
+  console.log(`there are ${DAYS_PER_WEEK} days per week`)
   // Declares a variable those value can be changed
+let days_per_month = 30;
+console.log(`there are ${days_per_month} days per month`)
   // Declares a variable that will always be an array
-}
+  const marcusArray = [
+    "Brown Hair",
+    "5' 10'",
+    "black and white",
+    "Ohio",
+  ]
+  console.log(`Here are some facts about marcus ${marcusArray}`)
+  console.table(marcusArray)
+} /* end of variables function */
 
 /**
  * Functions can also accept parameters.
