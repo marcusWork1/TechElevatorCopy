@@ -1,0 +1,22 @@
+Java,2939,James T. Kirk,100,100,100,100
+C#,4522,Steve Jobs,91,48,91,26
+QA,123913,C3PO,93,72,57,34
+C#,29382,Woz,100,100,100,100
+QA,92817,R2D2,84,84,88,86
+C#,10293,Mark Zuckerberg,0,0,0,00
+Java,28312,Worf,93,90,93,93
+C#,92827,Jeff Bezos,15,98,44,56
+Java,783,Hikaru Sulu,90,93,99,96
+Java,93938,Nyota Uhura,100,100,100,100
+Python,123405,Elon Musk,89,99,95,100
+QA,8376,Data D'Android,91,94,99,99
+Java,34,Scotty,92,90,97,98
+Python,738,Kevin Systrom,56,81,30,71
+C#,293847,Thomas J. Watson,78,30,62,12
+Java,10110,Spock,98,98,98,98
+Java,48201,Dr. McCoy,82,82,88,85
+Python,1225,Larry Page,26,35,6,93
+Java,293826,Pavel Checkov,81,90,86,96
+Python,3829,Lee Byung-chul,48,42,91,38
+C#,101,Bill Gates,52,39,44,55
+QA,9282,Sheldon Cooper,46,26,47,93
