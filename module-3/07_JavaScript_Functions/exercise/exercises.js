@@ -13,12 +13,23 @@
  * gpa is above 3.0 and they have a recommendation OR
  * SAT score is above 1200 and they have a recommendation
  * OTHERWISE reject it
+ 
  *
  * @param {number} gpa the GPA of the student, between 4.2 and 1.0
  * @param {number} [satScore=0] the student's SAT score
  * @param {boolean} [recommendation=false] does the student have a recommendation
  * @returns {boolean} true if they are admitted
  */
+function isAdmitted(gpa, sat, recommendation) {
+    if(gpa > 4.0 || sat > 1300) {
+        return true;
+    } else if (gpa > 3.0 & recommendation) {
+        return true;
+    } else if (sat > 1200 & recommendation) {
+        return true;
+    }
+    return false;
+}
 
 /**
  * Write a function called useParameterToFilterArray that accepts a filter function
@@ -27,8 +38,14 @@
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
  */
-let unfilteredArray = [1, 2, 3, 4, 5, 6];
+ 
+ let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
+ function useParameterToFilterArray(filterFunction) {
+     return unfilteredArray.filter(filterFunction)
+ }
+
+    
 /**
  * Write a function called makeNumber that takes two strings
  * of digits, concatenates them together, and returns
@@ -41,6 +58,13 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+function makeNumber(first, second) {
+    string = first + second;
+   let number = parseInt(string);
+ return number;
+} 
+
+
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
@@ -49,12 +73,27 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {...number} num a series of numbers to add together
  * @returns {number} the sum of all the parameters (or arguments)
  */
+function addAll(...num) {
+    let sum = 0;
+    for (let i=0; i<num.length; i++)
+    sum += num[i]
+    return sum;
+}
 
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+function makeHappy (array) {
+    let happyNewArray = array.map((word) => {
+        return "Happy " + word;
+    });
+    
+return happyNewArray
+}
+
+   
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -77,6 +116,15 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * Use `map` and an anonymous function.
  */
 
+function getFullAddressesOfProperties(array) {
+    let returnedArray = array.map((keys) => {
+        return keys;
+    });
+    return returnedArray
+}
+
+
+
 /** 
  * Write and document a function called findLargest that uses `forEach`
  * to find the largest element in an array.
@@ -91,7 +139,16 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {number[]|string[]} searchArray the array to search
  * @returns {number|string} the number or string that is largest
  **/
+ function findLargest(arr) {
+    let largest = 0; 
+    arr.forEach(function(elem){
+      if(largest < elem) 
+      arr = elem;
+    })  
+    
+    return arr + 1;
 
+  }
 
 /*
  * CHALLENGE
