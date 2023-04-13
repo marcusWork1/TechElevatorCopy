@@ -35,6 +35,20 @@
         5 Star Review{{ numberOfFiveStarReviews === 1 ? '' : 's' }}
       </div>
     </div>
+    <!-- add form to collect new review -->
+    <form>
+      <div> <!-- collect the name of the Reviewer from user and store information -->
+      <label for="reviewer"> Name: </label>
+      <!-- connect the input box for reviewer to the JS variable newReview.reviewer-->
+      <input id="reviewer" type="text" v-model="newReview.reviewer"/>
+   </div>
+
+      <div> <!-- collect the title of the review -->
+
+        </div>
+
+    
+    </form>
 
     <div
       class="review"
@@ -65,14 +79,14 @@
 </template>
 
 <script>
-export default {
-  name: "product-review",
-  data() {
-    return {
+export default { /* expost data to external processes like Vue */
+  name: "product-review", /* name  attribute is used by Vue to get data for a component */
+  data() {          /* provides the data to Vue - Vue calls data for componenet */
+    return {      /* any data to be shared with Vue should be in the return of the data function */
       name: "Cigar Parties for Dummies",
       description:
         "Host and plan the perfect cigar party for all of your squirrelly friends.",
-      newReview: {},
+      newReview: {}, /* hold a new review entered in the from on our paage */
       reviews: [
         {
           reviewer: "Malcolm Gladwell",
@@ -108,13 +122,13 @@ export default {
         }
       ]
     };
-  },
-  computed: {
-    averageRating() {
+  }, /* end of data() function */
+  computed: { /* anything in here is computed/run whenever any data on page is changed */
+    averageRating() { /* calculate avg ratings whenever data on page changes */
       let sum = this.reviews.reduce((currentSum, review) => {
         return currentSum + review.rating;
       }, 0);
-      return (sum / this.reviews.length).toFixed(2);
+      return (sum / this.reviews.length).toFixed(2); /* toFixed rounds to decimal places*/
     },
     numberOfOneStarReviews() {
       return this.reviews.reduce((currentCount, review) => {

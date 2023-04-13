@@ -1,11 +1,11 @@
-<template>
+<template> <!-- contains html -->
   <div id="app">
     <img alt="Vue logo" src="./assets/cigarpartylogo.png" />
     <product-review></product-review>
   </div>
 </template>
 
-<script>
+<script> // containts JS
 import ProductReview from "./components/ProductReview.vue";
 
 export default {
@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped> /*contains CSS */
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
