@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
+        <td><input type="text" id="firstNameFilter" v-model="search.firstName" /></td>
+        <td><input type="text" id="lastNameFilter" v-model="search.lastName" /></td>
+        <td><input type="text" id="usernameFilter"  v-model="search.username"/></td>
+        <td><input type="text" id="emailFilter" v-model="search.emailAddress"/></td>
         <td>
-          <select id="statusFilter">
+          <select id="statusFilter" v-model="search.status">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
@@ -24,31 +24,23 @@
         </td>
       </tr>
       <!-- user listing goes here -->
-      <tr> v-for="user in filteredList"
-         v-bind:key="user.id" 
-         :class="{disabled: user.status === 'Disabled'}">
-      <td>{{ user.firstName}} </td>
-       <td>{{ user.lastName}} </td>
-        <td>{{ user.username}} </td>
-         <td>{{ user.emailAddress}} </td>
-          <td>{{ user.status}} </td>
-          </tr>
+                  <!--(aUser,index)?-->
+         <tr v-for="aUser in filteredList" v-bind:key="aUser.id" v-bind:class="{inactive : aUser.status === 'Inactive'}">
+            <td>{{aUser.firstName}}</td>
+            <td>{{aUser.lastName}}</td>
+            <td>{{aUser.username}}</td>
+            <td>{{aUser.emailAddress}}</td>
+            <td>{{aUser.status}}</td>
+         </tr>
     </tbody>
   </table>
 </template>
-
 <script>
 export default {
   name: 'user-list',
   data() {
     return {
-       filter: {
-        firstName: "",
-        lastName: "",
-        username: "",
-        emailAddress: "",
-        status: ""
-      },
+      search: {firstName:"", lastName:"", username:"", emailAddress:"", status: ""},
       users: [
         { firstName: 'John', lastName: 'Smith', username: 'jsmith', emailAddress: 'jsmith@gmail.com', status: 'Active' },
         { firstName: 'Anna', lastName: 'Bell', username: 'abell', emailAddress: 'abell@yahoo.com', status: 'Active' },
@@ -58,51 +50,40 @@ export default {
         { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Inactive' }
       ]
     }
-  },
-  computed: {
-  filteredList() {
-    let filteredUsers = this.users;
-    if (this.filter.firstName != "") {
-      filteredUsers = filteredUsers.filter((user) =>
-        user.firstName
-          .toLowerCase()
-          .includes(this.filter.firstName.toLowerCase())
-      );
-    }
-    if (this.filter.lastName != "") {
-      filteredUsers = filteredUsers.filter((user) =>
-        user.lastName
-          .toLowerCase()
-          .includes(this.filter.lastName.toLowerCase())
-      );
-    }
-    if (this.filter.username != "") {
-      filteredUsers = filteredUsers.filter((user) =>
-        user.username
-          .toLowerCase()
-          .includes(this.filter.username.toLowerCase())
-      );
-    }
-    if (this.filter.emailAddress != "") {
-      filteredUsers = filteredUsers.filter((user) =>
-        user.emailAddress
-          .toLowerCase()
-          .includes(this.filter.emailAddress.toLowerCase())
-      );
-    }
-    if (this.filter.status != "") {
-      filteredUsers = filteredUsers.filter((user) =>
-        user.status === this.filter.status
-      );
-    }
-    return filteredUsers;
-  }
+   }, // End of data()
+   computed: {
+   filteredList(){
+     let searchedUser = this.users;
+     if(this.search.firstName != ""){
+      searchedUser = searchedUser.filter((userInput) =>
+      userInput.firstName.toLowerCase().includes(this.search.firstName.toLowerCase())
+     )
+   }
+    if(this.search.lastName != ""){
+     searchedUser = searchedUser.filter((userInput) =>
+       userInput.lastName.toLowerCase().includes(this.search.lastName.toLowerCase())
+     )
+   }
+    if(this.search.username != ""){
+     searchedUser = searchedUser.filter((userInput) =>
+       userInput.username.toLowerCase().includes(this.search.username.toLowerCase())
+     )
+   }
+   if(this.search.emailAddress != ""){
+     searchedUser = searchedUser.filter((userInput) =>
+       userInput.emailAddress.toLowerCase().includes(this.search.emailAddress.toLowerCase())
+     )
+   }
+   if(this.search.status != ""){
+     searchedUser = searchedUser.filter((userInput) =>
+       userInput.status === this.search.status
+     )
+   }
+   return searchedUser;
+   }
 }
-
-
 }
 </script>
-
 <style scoped>
 table {
   margin-top: 20px;
