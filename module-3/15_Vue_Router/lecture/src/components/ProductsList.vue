@@ -9,6 +9,8 @@
     </thead>
     <tbody>
       <tr v-for="product in $store.state.products" v-bind:key="product.id">
+        <router-link v-bind:to="{name: 'product-detail', params : {id: product.id}}">
+        </router-link>
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.reviews.length }}</td>
