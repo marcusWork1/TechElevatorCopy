@@ -59,9 +59,9 @@
     </table>
 
     <div class="all-actions">
-      <button v-on:deactivate="(actionButtonDeactivated ? false:true)" v-on:click="activateSelectedUsers">Activate Users</button>
-      <button v-on:deactivate="(actionButtonDeactivated ? false:true)" v-on:click="deactivateSelectedUsers">Deactivate Users</button>
-      <button v-on:deactivate="(actionButtonDeactivated ? false:true)" v-on:click="deleteSelectedUsers">Delete Users</button>
+      <button v-on:disable="(actionButtonDeactivated ? false:true)" v-on:click="activateSelectedUsers">Activate Users</button>
+      <button v-on:disable="(actionButtonDeactivated ? false:true)" v-on:click="deactivateSelectedUsers">Deactivate Users</button>
+      <button v-on:disable="(actionButtonDeactivated ? false:true)" v-on:click="deleteSelectedUsers">Delete Users</button>
     </div>
 
     <button v-on:click="showForm = !showForm">Add New User</button>
