@@ -5,16 +5,17 @@
       <input type="text" v-model="title" />
     </div>
     <div class="actions">
-      <button type="submit" v-on:click="updateTopic()">Save Document</button>
+      <router-link to="/">
+        <button type="submit" v-on:click="updateTopic()">Save Document</button>
+      </router-link>
     </div>
   </form>
 </template>
 
 <script>
 import topicService from "../services/TopicService";
-
 export default {
-  name: "update-topic",
+  name: "create-topic",
   props: ["topicID"],
   data() {
     return {
@@ -24,7 +25,9 @@ export default {
   methods: {
     updateTopic() {
       const topic = { id: this.topicID, title: this.title };
-      // call topic service update method
+      topicService.update(topic).then(response => {
+        this.topic = response.data
+      })
     }
   },
   created() {
@@ -36,7 +39,7 @@ export default {
       })
       .catch(error => {
         if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
+          this.$router.push("/not-found");
         }
       });
   }

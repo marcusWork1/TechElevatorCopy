@@ -16,9 +16,8 @@
 
 <script>
 import messageService from "../services/MessageService";
-
 export default {
-  name: "update-message",
+  name: "create-message",
   props: ["topicId", "messageId"],
   data() {
     return {
@@ -35,6 +34,8 @@ export default {
         messageText: this.messageText
       };
       // call update in message service
+      messageService.update(message);
+      this.$router.push(`/${message.topicId}`);
     }
   },
   created() {
@@ -47,7 +48,7 @@ export default {
       })
       .catch(error => {
         if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
+          this.$router.push("/not-found");
         }
       });
   }

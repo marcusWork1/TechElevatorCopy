@@ -14,6 +14,7 @@
       <p class="message-body">{{ message.messageText }}</p>
       <router-link
         :to="{name: 'EditMessage', params: {topicId: $store.state.activeTopic.id, messageId: message.id} }"
+        tag="button"
         class="btnEditMessage"
       >Edit</router-link>
       <button class="btnDeleteMessage" v-on:click="deleteMessage(message.id)">Delete</button>
@@ -22,16 +23,18 @@
 </template>
 
 <script>
-import topicService from "../services/TopicService.js";
-import messageService from "../services/MessageService.js";
-
+import topicService from "@/services/TopicService.js";
+import messageService from "@/services/MessageService.js";
 export default {
   name: "topic-details",
   props: {
     topicId: Number
   },
   methods: {
-    deleteMessage(id) {}
+    deleteMessage(id) {
+      messageService.delete(id)
+      this.$store.commit("DELETE_MESSAGE", id);
+    }
   },
   created() {
     topicService
@@ -41,7 +44,7 @@ export default {
       })
       .catch(error => {
         if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
+          this.$router.push("/not-found");
         }
       });
   }
@@ -55,14 +58,12 @@ export default {
   margin: 0 auto;
   max-width: 600px;
 }
-
 /** ios1-ios6 bubbles **/
 .topic-details .bubble {
   box-sizing: border-box;
   width: auto;
   position: relative;
   clear: both;
-
   background: #95c2fd;
   background-image: -webkit-gradient(
     linear,
@@ -77,12 +78,10 @@ export default {
   background-image: -o-linear-gradient(bottom, #bee2ff 15%, #95c2fd 100%);
   background-image: linear-gradient(to top, #bee2ff 15%, #95c2fd 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#95c2fd', endColorstr='#bee2ff');
-
   border: solid 1px rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-
   -webkit-box-shadow: inset 0 8px 5px rgba(255, 255, 255, 0.65),
     0 1px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 8px 5px rgba(255, 255, 255, 0.65),
@@ -95,7 +94,6 @@ export default {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
   word-wrap: break-word;
 }
-
 .addMessage {
   display: block;
   padding: 0 0 10px 10px;
@@ -107,30 +105,5 @@ a.addMessage:visited {
 }
 a.addMessage:hover {
   text-decoration: underline;
-}
-.btnEditMessage {
-  -webkit-appearance: button;
-  -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
-  text-decoration: none;
-  color: buttontext;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  background-color: buttonface;
-  box-sizing: border-box;
-  margin: 0em;
-  font: 400 13.3333px Arial;
-  padding: 1px 6px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: buttonface;
-  border-image: initial;
 }
 </style>
